@@ -51,7 +51,7 @@
                 <ul style="display: flex; gap: 2.5rem;">
                     <li><a href="#about" class="nav-link">About</a></li>
                     <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="#projects" class="nav-link">Work</a></li>
+                    <li><a href="works.html" class="nav-link">Work</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -63,19 +63,16 @@
         <!-- Hero Section -->
         <section id="hero" class="container">
             <div class="hero-content">
-                <span class="hero-subtitle reveal">Portfolio 2026</span>
-                <h1 class="reveal delay-100">
-                    Building <span class="text-gradient">Digital Experiences</span> that leave a mark.
-                </h1>
-                <p class="hero-description reveal delay-200">
+                <h1 class="text-gradient">Crafting Digital Experiences That Matter</h1>
+                <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin-bottom: 2rem;">
                     I'm Isam Mohammed, a passionate developer crafting modern, accessible, and performant web
-                    applications with a focus on user experience.
+                    applications.
                 </p>
-                <div class="reveal delay-300" style="display: flex; gap: 1rem;">
-                    <a href="#projects" class="btn btn-primary">
-                        View Work <i data-feather="arrow-right"></i>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="works.html" class="btn btn-primary">
+                        View Projects <i data-feather="arrow-right"></i>
                     </a>
-                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
                 </div>
             </div>
         </section>
@@ -85,52 +82,71 @@
             <h2 class="text-gradient">About Me</h2>
             <div class="grid grid-2" style="align-items: center;">
                 <div>
-                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.1rem;">
-                        I am a university student pursuing my bachelors in Mechanical Engineering at Abu Dhabi
-                        University. I bridge the gap between engineering principles and digital creation through code.
+                    <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        I specialize in building full-stack web applications with a focus on clean design, slick user
+                        interfaces, and scalable backend services.
                     </p>
-                    <p style="color: var(--text-secondary); font-size: 1.1rem;">
-                        I code for fun and to discover new skills in the process. My background in engineering gives me
-                        a unique perspective on problem-solving and system design in the web development world.
+                    <p style="font-size: 1.1rem; color: var(--text-secondary);">
+                        With a background in modern web technologies, I bring ideas to life from concept to deployment.
                     </p>
                 </div>
-                <div class="card glass"
-                    style="aspect-ratio: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
-                    <div style="background: var(--gradient-primary); opacity: 0.1; position: absolute; inset: 0;"></div>
-                    <span
-                        style="font-size: 4rem; font-weight: 700; color: var(--text-primary); border: 2px solid var(--text-primary); width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">IM</span>
+                <div class="card glass" style="padding: 2.5rem;">
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: var(--text-secondary);">Experience</span>
+                            <span style="font-weight: 600;">3+ Years</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: var(--text-secondary);">Focus</span>
+                            <span style="font-weight: 600;">Frontend & Full-Stack</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: var(--text-secondary);">Availability</span>
+                            <span style="font-weight: 600; color: var(--accent-color);">Open to Projects</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Skills Section -->
         <section id="skills" class="section container reveal">
-            <h2 class="text-gradient">Skills & Technologies</h2>
-            <div class="grid grid-2">
+            <h2 class="text-gradient">Technologies</h2>
+            <div class="grid grid-3">
                 <div class="card">
-                    <h3 style="margin-bottom: 1rem;">Core Skills</h3>
-                    <ul style="color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.5rem;">
-                        <li>Python</li>
-                        <li>JavaScript (ES6+)</li>
-                        <li>HTML5</li>
-                        <li>CSS3</li>
-                    </ul>
+                    <i data-feather="code"
+                        style="width: 32px; height: 32px; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                    <h3 style="margin-bottom: 0.5rem;">Frontend</h3>
+                    <p style="color: var(--text-secondary);">React, Next.js, HTML5, CSS3, JavaScript, TypeScript,
+                        Tailwind CSS</p>
                 </div>
                 <div class="card">
-                    <h3 style="margin-bottom: 1rem;">Engineering & Learning</h3>
-                    <ul style="color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.5rem;">
-                        <li>Mechanical Engineering</li>
-                        <li>System Design</li>
-                        <li>Problem Solving</li>
-                        <li>Continuous Learning</li>
-                    </ul>
+                    <i data-feather="server"
+                        style="width: 32px; height: 32px; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                    <h3 style="margin-bottom: 0.5rem;">Backend</h3>
+                    <p style="color: var(--text-secondary);">Node.js, Express, Python, REST APIs, GraphQL, PostgreSQL
+                    </p>
+                </div>
+                <div class="card">
+                    <i data-feather="terminal"
+                        style="width: 32px; height: 32px; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                    <h3 style="margin-bottom: 0.5rem;">Tools & Workflow</h3>
+                    <p style="color: var(--text-secondary);">Git, GitHub, Docker, Vercel, Figma, CI/CD</p>
                 </div>
             </div>
         </section>
 
         <!-- Projects Section -->
         <section id="projects" class="section container reveal">
-            <h2 class="text-gradient">Selected Works</h2>
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h2 class="text-gradient" style="margin-bottom: 0.5rem;">Selected Works</h2>
+                    <p style="color: var(--text-secondary);">Featured projects showcasing design and engineering capabilities.</p>
+                </div>
+                <a href="works.html" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                    View All Works <i data-feather="arrow-right"></i>
+                </a>
+            </div>
             <div class="grid grid-2">
                 <!-- Project 1 -->
                 <article class="card">
