@@ -484,3 +484,114 @@ input:not(:checked)+.slider .sun-icon {
         grid-template-columns: 1fr;
     }
 }
+
+/* --- Works Page & Filtering Styles --- */
+.page-header {
+    padding-top: calc(var(--header-height) + 3rem);
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin: 2.5rem 0 3rem 0;
+}
+
+.filter-btn {
+    background: var(--surface-color);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1.25rem;
+    border-radius: 30px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.filter-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-color);
+    background: var(--surface-color-light);
+}
+
+.filter-btn.active {
+    background: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.project-card {
+    transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card.hide {
+    display: none !important;
+}
+
+.tech-badge {
+    background: var(--surface-color-light);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.project-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    align-items: center;
+}
+
+.project-actions a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    transition: var(--transition-fast);
+}
+
+.btn-sm-primary {
+    background: var(--accent-color);
+    color: #fff !important;
+}
+
+.btn-sm-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.btn-sm-outline {
+    border: 1px solid var(--border-color);
+    color: var(--text-primary) !important;
+}
+
+.btn-sm-outline:hover {
+    border-color: var(--accent-color);
+    background: var(--surface-color-light);
+}

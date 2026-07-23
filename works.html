@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works & Projects | Isam Mohammed</title>
+    <meta name="description" content="Explore selected projects and works by Isam Mohammed - Web Developer & Creator.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body>
+
+    <!-- Navigation Header -->
+    <header class="glass">
+        <div class="container"
+            style="display: flex; justify-content: space-between; align-items: center; height: 100%;">
+            <a href="index.html" class="logo"
+                style="display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em;">
+                <img src="favicon.svg" alt="IM Logo" style="width: 32px; height: 32px; border-radius: 6px;">
+            </a>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle" aria-label="Toggle Theme">
+                        <div class="slider">
+                            <i data-feather="sun" class="sun-icon"></i>
+                            <i data-feather="moon" class="moon-icon"></i>
+                        </div>
+                    </label>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
+            <nav class="nav-menu">
+                <ul style="display: flex; gap: 2.5rem;">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#about" class="nav-link">About</a></li>
+                    <li><a href="works.html" class="nav-link active" style="color: var(--accent-color);">Work</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header Section -->
+        <section class="page-header container reveal">
+            <h1 class="text-gradient">Selected Works</h1>
+            <p>A collection of web applications, tools, and design projects crafted with attention to performance, usability, and detail.</p>
+            
+            <!-- Category Filter Pills -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Apps</button>
+                <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+                <button class="filter-btn" data-filter="tools">Tools & Utilities</button>
+                <button class="filter-btn" data-filter="design">UI / UX</button>
+            </div>
+        </section>
+
+        <!-- Projects Grid Section -->
+        <section class="container reveal delay-100" style="padding-bottom: 5rem;">
+            <div class="grid grid-3">
+
+                <!-- Project 1: E-Commerce Platform -->
+                <article class="card project-card" data-category="fullstack">
+                    <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); height: 200px; border-radius: 8px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                        <div style="background: var(--accent-color); width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.4; position: absolute; top: 20%; left: 20%;"></div>
+                        <i data-feather="shopping-bag" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
+                    </div>
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">E-Commerce Platform</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
+                        Full-featured storefront with dynamic cart, automated checkout integration, and custom inventory admin panel.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">MongoDB</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="btn-sm-primary"><i data-feather="external-link" style="width: 14px; height: 14px;"></i> Live Demo</a>
+                        <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> Code</a>
+                    </div>
+                </article>
+
+                <!-- Project 2: Task Management App -->
+                <article class="card project-card" data-category="web">
+                    <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); height: 200px; border-radius: 8px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                        <div style="background: var(--accent-secondary); width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.4; position: absolute; bottom: 20%; right: 20%;"></div>
+                        <i data-feather="trello" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
+                    </div>
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Task Management App</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
+                        Productivity tool providing kanban boards, drag-and-drop workflow tracking, and real-time updates.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span class="tech-badge">Next.js</span>
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">Tailwind</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="btn-sm-primary"><i data-feather="external-link" style="width: 14px; height: 14px;"></i> Live Demo</a>
+                        <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> Code</a>
+                    </div>
+                </article>
+
+                <!-- Project 3: AI Content Generator -->
+                <article class="card project-card" data-category="tools">
+                    <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); height: 200px; border-radius: 8px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                        <div style="background: #8b5cf6; width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.35; position: absolute; top: 30%; right: 30%;"></div>
+                        <i data-feather="cpu" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
+                    </div>
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">AI Studio Helper</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
+                        An AI-assisted content generator that creates summaries, blog outlines, and code snippets on demand.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">FastAPI</span>
+                        <span class="tech-badge">OpenAI API</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="btn-sm-primary"><i data-feather="external-link" style="width: 14px; height: 14px;"></i> Live Demo</a>
+                        <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> Code</a>
+                    </div>
+                </article>
+
+                <!-- Project 4: Design System & UI Library -->
+                <article class="card project-card" data-category="design">
+                    <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); height: 200px; border-radius: 8px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                        <div style="background: #06b6d4; width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.35; position: absolute; bottom: 10%; left: 10%;"></div>
+                        <i data-feather="layers" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
+                    </div>
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Minimalist UI System</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
+                        A cohesive component library engineered for high accessibility, smooth dark-mode transitions, and crisp typography.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span class="tech-badge">CSS Tokens</span>
+                        <span class="tech-badge">Figma</span>
+                        <span class="tech-badge">Storybook</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="btn-sm-primary"><i data-feather="external-link" style="width: 14px; height: 14px;"></i> Live Demo</a>
+                        <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> Code</a>
+                    </div>
+                </article>
+
+                <!-- Project 5: Weather Dashboard -->
+                <article class="card project-card" data-category="tools">
+                    <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); height: 200px; border-radius: 8px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                        <div style="background: #3b82f6; width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.35; position: absolute; top: 15%; right: 15%;"></div>
+                        <i data-feather="cloud-rain" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
+                    </div>
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Weather Analytics App</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
+                        Interactive forecast dashboard with location detection, interactive maps, and detailed historical climate data visualization.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">OpenWeather API</span>
+                        <span class="tech-badge">Chart.js</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="btn-sm-primary"><i data-feather="external-link" style="width: 14px; height: 14px;"></i> Live Demo</a>
+                        <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> Code</a>
+                    </div>
+                </article>
+
+                <!-- Project 6: Interactive Developer Portfolio -->
+                <article class="card project-card" data-category="web">
+                    <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); height: 200px; border-radius: 8px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                        <div style="background: var(--accent-color); width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.35; position: absolute; bottom: 20%; left: 20%;"></div>
+                        <i data-feather="code" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
+                    </div>
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Personal Portfolio Site</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
+                        Lightweight, fast, and responsive portfolio site built with vanilla HTML, CSS, and JS with glassmorphism design.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">Vanilla CSS</span>
+                        <span class="tech-badge">JavaScript</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="index.html" class="btn-sm-primary"><i data-feather="external-link" style="width: 14px; height: 14px;"></i> Live Site</a>
+                        <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> Code</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- CTA Callout Section -->
+        <section class="container reveal" style="padding-bottom: 5rem;">
+            <div class="card glass" style="text-align: center; max-width: 700px; margin: 0 auto; padding: 3.5rem 2rem;">
+                <h2 class="text-gradient" style="margin-bottom: 1rem;">Have a project in mind?</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">
+                    I'm available for freelance projects, technical collaborations, and full-time opportunities.
+                </p>
+                <a href="index.html#contact" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                    Get In Touch <i data-feather="arrow-right"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container"
+            style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 Isam Mohammed. All rights reserved.</p>
+            <div style="display: flex; gap: 1.5rem;">
+                <a href="https://github.com/GhostRider011" target="_blank" rel="noopener" style="color: var(--text-secondary);"><i data-feather="github"></i></a>
+                <a href="#" style="color: var(--text-secondary);"><i data-feather="linkedin"></i></a>
+                <a href="#" style="color: var(--text-secondary);"><i data-feather="twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Feather Icons Init -->
+    <script>
+        feather.replace();
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
