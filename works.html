@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Works & Projects | Isam Mohammed</title>
-    <meta name="description" content="Explore selected projects and works by Isam Mohammed - Web Developer & Creator.">
+    <title>Side Projects & Works | Isam Mohammed</title>
+    <meta name="description" content="Explore side projects, CAD designs, and software explorations by Isam Mohammed - 2nd Year Mechanical Engineering Student.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,16 +61,16 @@
     <main>
         <!-- Page Header Section -->
         <section class="page-header container reveal">
-            <h1 class="text-gradient">Selected Works</h1>
-            <p>A collection of web applications, tools, and design projects crafted with attention to performance, usability, and detail.</p>
+            <h1 class="text-gradient">Side Projects & Works</h1>
+            <p>A collection of CAD drafting projects, basic web applications, Python scripts, and Flutter mobile prototypes built alongside my Mechanical Engineering studies.</p>
             
             <!-- Category Filter Pills -->
             <div class="filter-container">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="web">Web Apps</button>
-                <button class="filter-btn" data-filter="fullstack">Full Stack</button>
-                <button class="filter-btn" data-filter="tools">Tools & Utilities</button>
-                <button class="filter-btn" data-filter="design">UI / UX</button>
+                <button class="filter-btn" data-filter="cad">CAD & Engineering</button>
+                <button class="filter-btn" data-filter="web">Web Projects</button>
+                <button class="filter-btn" data-filter="python">Python Scripts</button>
+                <button class="filter-btn" data-filter="flutter">Flutter Apps</button>
             </div>
         </section>
 
@@ -78,128 +78,123 @@
         <section class="container reveal delay-100" style="padding-bottom: 5rem;">
             <div class="grid grid-3">
 
-                <!-- Project 1: E-Commerce Platform -->
-                <article class="card project-card" data-category="fullstack">
+                <!-- Project 1: AutoCAD Mechanical Models -->
+                <article class="card project-card" data-category="cad">
                     <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); height: 200px; border-radius: 8px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
                         <div style="background: var(--accent-color); width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.4; position: absolute; top: 20%; left: 20%;"></div>
-                        <i data-feather="shopping-bag" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
+                        <i data-feather="compass" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
                     </div>
-                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">E-Commerce Platform</h3>
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">AutoCAD Mechanical Models</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
-                        Full-featured storefront with dynamic cart, automated checkout integration, and custom inventory admin panel.
+                        Detailed 2D component drafting, orthographic projections, and 3D solid models of mechanical assemblies in AutoCAD.
                     </p>
                     <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
-                        <span class="tech-badge">React</span>
-                        <span class="tech-badge">Node.js</span>
-                        <span class="tech-badge">MongoDB</span>
+                        <span class="tech-badge">AutoCAD</span>
+                        <span class="tech-badge">2D Drafting</span>
+                        <span class="tech-badge">3D Modeling</span>
                     </div>
                     <div class="project-actions">
-                        <a href="#" class="btn-sm-primary"><i data-feather="external-link" style="width: 14px; height: 14px;"></i> Live Demo</a>
-                        <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> Code</a>
+                        <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> View Repository</a>
                     </div>
                 </article>
 
-                <!-- Project 2: Task Management App -->
+                <!-- Project 2: Personal Portfolio Website -->
                 <article class="card project-card" data-category="web">
                     <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); height: 200px; border-radius: 8px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
                         <div style="background: var(--accent-secondary); width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.4; position: absolute; bottom: 20%; right: 20%;"></div>
-                        <i data-feather="trello" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
+                        <i data-feather="globe" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
                     </div>
-                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Task Management App</h3>
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Personal Portfolio Website</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
-                        Productivity tool providing kanban boards, drag-and-drop workflow tracking, and real-time updates.
-                    </p>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
-                        <span class="tech-badge">Next.js</span>
-                        <span class="tech-badge">TypeScript</span>
-                        <span class="tech-badge">Tailwind</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="#" class="btn-sm-primary"><i data-feather="external-link" style="width: 14px; height: 14px;"></i> Live Demo</a>
-                        <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> Code</a>
-                    </div>
-                </article>
-
-                <!-- Project 3: AI Content Generator -->
-                <article class="card project-card" data-category="tools">
-                    <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); height: 200px; border-radius: 8px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                        <div style="background: #8b5cf6; width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.35; position: absolute; top: 30%; right: 30%;"></div>
-                        <i data-feather="cpu" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
-                    </div>
-                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">AI Studio Helper</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
-                        An AI-assisted content generator that creates summaries, blog outlines, and code snippets on demand.
-                    </p>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">FastAPI</span>
-                        <span class="tech-badge">OpenAI API</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="#" class="btn-sm-primary"><i data-feather="external-link" style="width: 14px; height: 14px;"></i> Live Demo</a>
-                        <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> Code</a>
-                    </div>
-                </article>
-
-                <!-- Project 4: Design System & UI Library -->
-                <article class="card project-card" data-category="design">
-                    <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); height: 200px; border-radius: 8px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                        <div style="background: #06b6d4; width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.35; position: absolute; bottom: 10%; left: 10%;"></div>
-                        <i data-feather="layers" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
-                    </div>
-                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Minimalist UI System</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
-                        A cohesive component library engineered for high accessibility, smooth dark-mode transitions, and crisp typography.
-                    </p>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
-                        <span class="tech-badge">CSS Tokens</span>
-                        <span class="tech-badge">Figma</span>
-                        <span class="tech-badge">Storybook</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="#" class="btn-sm-primary"><i data-feather="external-link" style="width: 14px; height: 14px;"></i> Live Demo</a>
-                        <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> Code</a>
-                    </div>
-                </article>
-
-                <!-- Project 5: Weather Dashboard -->
-                <article class="card project-card" data-category="tools">
-                    <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); height: 200px; border-radius: 8px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                        <div style="background: #3b82f6; width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.35; position: absolute; top: 15%; right: 15%;"></div>
-                        <i data-feather="cloud-rain" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
-                    </div>
-                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Weather Analytics App</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
-                        Interactive forecast dashboard with location detection, interactive maps, and detailed historical climate data visualization.
-                    </p>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">OpenWeather API</span>
-                        <span class="tech-badge">Chart.js</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="#" class="btn-sm-primary"><i data-feather="external-link" style="width: 14px; height: 14px;"></i> Live Demo</a>
-                        <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> Code</a>
-                    </div>
-                </article>
-
-                <!-- Project 6: Interactive Developer Portfolio -->
-                <article class="card project-card" data-category="web">
-                    <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); height: 200px; border-radius: 8px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                        <div style="background: var(--accent-color); width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.35; position: absolute; bottom: 20%; left: 20%;"></div>
-                        <i data-feather="code" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
-                    </div>
-                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Personal Portfolio Site</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
-                        Lightweight, fast, and responsive portfolio site built with vanilla HTML, CSS, and JS with glassmorphism design.
+                        Responsive personal portfolio website built with HTML5, CSS3, and JavaScript featuring glassmorphism design and theme toggle.
                     </p>
                     <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
                         <span class="tech-badge">HTML5</span>
-                        <span class="tech-badge">Vanilla CSS</span>
+                        <span class="tech-badge">CSS3</span>
                         <span class="tech-badge">JavaScript</span>
                     </div>
                     <div class="project-actions">
                         <a href="index.html" class="btn-sm-primary"><i data-feather="external-link" style="width: 14px; height: 14px;"></i> Live Site</a>
+                        <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> Code</a>
+                    </div>
+                </article>
+
+                <!-- Project 3: Python Automation Scripts -->
+                <article class="card project-card" data-category="python">
+                    <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); height: 200px; border-radius: 8px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                        <div style="background: #8b5cf6; width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.35; position: absolute; top: 30%; right: 30%;"></div>
+                        <i data-feather="terminal" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
+                    </div>
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Python Utility Scripts</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
+                        Handy Python scripts created to automate repetitive file management tasks, basic data parsing, and engineering calculations.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span class="tech-badge">Python Basics</span>
+                        <span class="tech-badge">Automation</span>
+                        <span class="tech-badge">CLI</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> Code</a>
+                    </div>
+                </article>
+
+                <!-- Project 4: Flutter App Prototype -->
+                <article class="card project-card" data-category="flutter">
+                    <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); height: 200px; border-radius: 8px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                        <div style="background: #06b6d4; width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.35; position: absolute; bottom: 10%; left: 10%;"></div>
+                        <i data-feather="smartphone" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
+                    </div>
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Flutter App UI Experiment</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
+                        Mobile application layout prototype created while exploring cross-platform mobile development with Flutter and Dart.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span class="tech-badge">Flutter Basics</span>
+                        <span class="tech-badge">Dart</span>
+                        <span class="tech-badge">Mobile UI</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> Code</a>
+                    </div>
+                </article>
+
+                <!-- Project 5: CAD Blueprint Schematics -->
+                <article class="card project-card" data-category="cad">
+                    <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); height: 200px; border-radius: 8px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                        <div style="background: #3b82f6; width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.35; position: absolute; top: 15%; right: 15%;"></div>
+                        <i data-feather="layers" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
+                    </div>
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">CAD Engineering Schematics</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
+                        Technical blueprint drawings, sectional views, and dimensioned engineering layouts created using AutoCAD.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span class="tech-badge">AutoCAD</span>
+                        <span class="tech-badge">Technical Drawings</span>
+                        <span class="tech-badge">Dimensioning</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> View Repository</a>
+                    </div>
+                </article>
+
+                <!-- Project 6: Interactive Web Widgets -->
+                <article class="card project-card" data-category="web">
+                    <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); height: 200px; border-radius: 8px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                        <div style="background: var(--accent-color); width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.35; position: absolute; bottom: 20%; left: 20%;"></div>
+                        <i data-feather="layout" style="width: 44px; height: 44px; color: var(--text-secondary); z-index: 1;"></i>
+                    </div>
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Interactive Web Components</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
+                        Practice UI components including interactive cards, modal popups, and theme toggles built using JavaScript DOM API.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">JS DOM</span>
+                    </div>
+                    <div class="project-actions">
                         <a href="https://github.com/GhostRider011/IM" target="_blank" rel="noopener" class="btn-sm-outline"><i data-feather="github" style="width: 14px; height: 14px;"></i> Code</a>
                     </div>
                 </article>
@@ -210,9 +205,9 @@
         <!-- CTA Callout Section -->
         <section class="container reveal" style="padding-bottom: 5rem;">
             <div class="card glass" style="text-align: center; max-width: 700px; margin: 0 auto; padding: 3.5rem 2rem;">
-                <h2 class="text-gradient" style="margin-bottom: 1rem;">Have a project in mind?</h2>
+                <h2 class="text-gradient" style="margin-bottom: 1rem;">Want to collaborate?</h2>
                 <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">
-                    I'm available for freelance projects, technical collaborations, and full-time opportunities.
+                    I'm always open to discussing engineering topics, CAD projects, or software side projects.
                 </p>
                 <a href="index.html#contact" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
                     Get In Touch <i data-feather="arrow-right"></i>
