@@ -120,3 +120,15 @@ if (filterBtns.length > 0) {
     });
 }
 
+// Scroll Progress Bar Update
+window.addEventListener('scroll', () => {
+    const progressBar = document.querySelector('.scroll-progress');
+    if (progressBar) {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progressPercentage = (scrollTop / scrollHeight) * 100;
+        progressBar.style.width = progressPercentage + '%';
+    }
+});
+
+
