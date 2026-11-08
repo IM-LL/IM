@@ -866,3 +866,66 @@ footer a[aria-label] {
         overflow-y: auto;
     }
 }
+
+
+/* ==========================================================================
+   DESKTOP THEME SPECIFICITY BOOST ([data-theme="light"] & [data-theme="dark"])
+   ========================================================================== */
+:root[data-theme="light"],
+html[data-theme="light"],
+[data-theme="light"] {
+    --bg-primary: #f8fafc;
+    --bg-color: #f8fafc;
+    --surface-card: rgba(255, 255, 255, 0.94);
+    --surface-color-light: rgba(255, 255, 255, 0.94);
+    --surface-elevated: #ffffff;
+    --surface-border: rgba(225, 29, 72, 0.22);
+    --border-color: rgba(225, 29, 72, 0.22);
+    --surface-border-hover: rgba(225, 29, 72, 0.55);
+    --border-hover: rgba(225, 29, 72, 0.55);
+    --accent-crimson: #e11d48;
+    --accent-color: #e11d48;
+    --accent-hover: #be123c;
+    --accent-secondary: #be123c;
+    --accent-glow: rgba(225, 29, 72, 0.18);
+    --accent-subtle: rgba(225, 29, 72, 0.08);
+    --text-main: #0f172a;
+    --text-primary: #0f172a;
+    --text-muted: #475569;
+    --text-secondary: #475569;
+    --glass-bg: rgba(255, 255, 255, 0.92);
+}
+
+:root[data-theme="light"] body,
+html[data-theme="light"] body {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+    background-image: 
+        linear-gradient(rgba(225, 29, 72, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(225, 29, 72, 0.05) 1px, transparent 1px),
+        radial-gradient(circle 800px at 50% -10%, rgba(225, 29, 72, 0.08), transparent 70%) !important;
+}
+
+:root[data-theme="light"] .bento-card-root,
+:root[data-theme="light"] .card {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border-color: rgba(225, 29, 72, 0.22) !important;
+    box-shadow: 0 4px 20px -8px rgba(15, 23, 42, 0.12) !important;
+}
+
+:root[data-theme="light"] .card-title-text,
+:root[data-theme="light"] .brand-logo,
+:root[data-theme="light"] .spec-val {
+    color: #0f172a !important;
+}
+
+:root[data-theme="light"] .card-body-text,
+:root[data-theme="light"] .hero-desc,
+:root[data-theme="light"] .section-subtitle,
+:root[data-theme="light"] .page-subtitle,
+:root[data-theme="light"] .nav-links-list a,
+:root[data-theme="light"] .nav-link,
+:root[data-theme="light"] .spec-key,
+:root[data-theme="light"] .footer-copy {
+    color: #475569 !important;
+}

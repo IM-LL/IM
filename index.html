@@ -17,11 +17,17 @@
     <!-- CSS Links -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Anti-FOUC Theme Initializer -->
+    <!-- Anti-FOUC Instant Theme Engine -->
     <script>
         (function() {
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            document.documentElement.setAttribute('data-theme', savedTheme);
+            const cached = localStorage.getItem('theme');
+            const theme = (cached === 'light' || cached === 'dark') ? cached : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            document.documentElement.setAttribute('data-theme', theme);
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    document.querySelectorAll('input#theme-toggle').forEach(el => { el.checked = (theme === 'dark'); });
+                });
+            }
         })();
     </script>
 
