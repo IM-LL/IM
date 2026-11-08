@@ -2,13 +2,13 @@
 const themeToggle = document.getElementById('theme-toggle');
 const htmlElement = document.documentElement;
 
-// Check for saved theme preference or default to system preference
+// Check for saved theme preference or default to dark (default requested: modern dark)
 const getPreferredTheme = () => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         return savedTheme;
     }
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    return 'dark';
 };
 
 // Set theme
@@ -16,7 +16,7 @@ const setTheme = (theme) => {
     htmlElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
 
-    // Update checkbox state
+    // Update checkbox state (checked = dark in this UI toggle)
     if (themeToggle) {
         themeToggle.checked = theme === 'dark';
     }
@@ -37,7 +37,7 @@ if (themeToggle) {
 const mobileBtn = document.querySelector('.mobile-menu-btn');
 const navMenu = document.querySelector('.nav-menu');
 
-if (mobileBtn) {
+if (mobileBtn && navMenu) {
     mobileBtn.addEventListener('click', () => {
         navMenu.classList.toggle('active');
         const icon = navMenu.classList.contains('active') ? 'x' : 'menu';
@@ -46,11 +46,12 @@ if (mobileBtn) {
     });
 }
 
-
 // Close menu when clicking a link
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
+        if (navMenu) {
+            navMenu.classList.remove('active');
+        }
         if (mobileBtn) {
             mobileBtn.querySelector('i').setAttribute('data-feather', 'menu');
             feather.replace();
@@ -61,19 +62,31 @@ document.querySelectorAll('.nav-link').forEach(link => {
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
         const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-
-        if (targetElement) {
-            const headerOffset = 80;
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
+        if (!targetId || targetId === '#') {
+            e.preventDefault();
             window.scrollTo({
-                top: offsetPosition,
+                top: 0,
                 behavior: "smooth"
             });
+            return;
+        }
+
+        try {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                const headerOffset = 80;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        } catch (err) {
+            // Fallback for invalid selector
         }
     });
 });
@@ -89,14 +102,14 @@ const revealObserver = new IntersectionObserver((entries) => {
     });
 }, {
     threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px"
+    rootMargin: "0px 0px -40px 0px"
 });
 
 revealElements.forEach(element => {
     revealObserver.observe(element);
 });
 
-// Project Filtering logic
+// Project Filtering logic (Works page)
 const filterBtns = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
 
@@ -119,4 +132,3 @@ if (filterBtns.length > 0) {
         });
     });
 }
-

@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isam Mohammed | Portfolio</title>
-    <meta name="description" content="Portfolio of Isam Mohammed - 2nd Year Mechanical Engineering Student & Tech Creator.">
+    <title>Isam Mohammed | Mechanical Engineering & Portfolio</title>
+    <meta name="description" content="Portfolio of Isam Mohammed - 2nd Year Mechanical Engineering Student & Tech Creator. CAD drafting, Python scripting, Flutter apps, and web development.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- CSS -->
@@ -24,15 +24,28 @@
 
 <body>
 
-    <!-- Navigation -->
+    <!-- Navigation Header -->
     <header class="glass">
         <div class="container"
             style="display: flex; justify-content: space-between; align-items: center; height: 100%;">
             <a href="#" class="logo"
-                style="display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em;">
-                <img src="favicon.svg" alt="IM Logo" style="width: 32px; height: 32px; border-radius: 6px;">
+                style="display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-heading); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.02em;">
+                <img src="favicon.svg" alt="IM Logo" style="width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <span>Isam<span class="text-cyan">.</span></span>
             </a>
-            <div style="display: flex; gap: 0.5rem; align-items: center;">
+
+            <!-- Right Controls & Navigation -->
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <nav class="nav-menu">
+                    <ul style="display: flex; gap: 2.25rem;">
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#skills" class="nav-link">Skills</a></li>
+                        <li><a href="#projects" class="nav-link">Projects</a></li>
+                        <li><a href="works.html" class="nav-link">Work</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+
                 <div class="theme-switch-wrapper">
                     <label class="theme-switch" for="theme-toggle">
                         <input type="checkbox" id="theme-toggle" aria-label="Toggle Theme">
@@ -42,18 +55,11 @@
                         </div>
                     </label>
                 </div>
+
                 <button class="mobile-menu-btn" aria-label="Toggle Menu">
                     <i data-feather="menu"></i>
                 </button>
             </div>
-            <nav class="nav-menu">
-                <ul style="display: flex; gap: 2.5rem;">
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="works.html" class="nav-link">Work</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
@@ -61,170 +67,390 @@
     <main>
         <!-- Hero Section -->
         <section id="hero" class="container">
-            <div class="hero-content" style="padding-top: 2rem; padding-bottom: 2rem;">
-                <span class="hero-subtitle reveal" style="color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.9rem; margin-bottom: 0.75rem; display: block;">2nd Year Mechanical Engineering Student</span>
-                <h1 class="text-gradient" style="margin-bottom: 1.25rem;">Engineering & Digital Side Projects</h1>
-                <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 640px; margin-bottom: 2.25rem; line-height: 1.7;">
+            <div class="hero-content">
+                <!-- Live Status Badge -->
+                <div class="status-badge-container reveal">
+                    <div class="status-badge">
+                        <span class="pulse-indicator">
+                            <span class="pulse-ping"></span>
+                            <span class="pulse-dot"></span>
+                        </span>
+                        <span>2nd Year Mechanical Engineering Student</span>
+                    </div>
+                </div>
+
+                <h1 class="text-gradient reveal delay-100" style="margin-bottom: 1.25rem;">
+                    Engineering & Digital Side Projects
+                </h1>
+
+                <p class="reveal delay-200" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 680px; margin-bottom: 2.5rem; line-height: 1.75;">
                     Hi, I'm Isam Mohammed. I study Mechanical Engineering and build web, mobile, and software side projects to learn and solve practical problems.
                 </p>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+
+                <div class="reveal delay-300" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
                     <a href="works.html" class="btn btn-primary">
                         View Side Projects <i data-feather="arrow-right"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/isam-mohammed-27762720a/" target="_blank" rel="noopener" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <a href="https://www.linkedin.com/in/isam-mohammed-27762720a/" target="_blank" rel="noopener" class="btn btn-outline">
                         <i data-feather="linkedin"></i> LinkedIn
                     </a>
-                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                    <a href="#contact" class="btn btn-outline">
+                        Get In Touch
+                    </a>
+                </div>
+
+                <!-- Engineering Spec Pills Strip -->
+                <div class="reveal delay-400" style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 3.5rem; align-items: center;">
+                    <span class="spec-badge"><i data-feather="check-circle" style="width: 13px; height: 13px;"></i> AutoCAD 2D/3D</span>
+                    <span class="spec-badge"><i data-feather="cpu" style="width: 13px; height: 13px;"></i> Python & Scripting</span>
+                    <span class="spec-badge"><i data-feather="smartphone" style="width: 13px; height: 13px;"></i> Flutter Apps</span>
+                    <span class="spec-badge"><i data-feather="code" style="width: 13px; height: 13px;"></i> Modern Web UI</span>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- About Section (Bento Overview) -->
         <section id="about" class="section container reveal">
-            <h2 class="text-gradient">About Me</h2>
-            <div class="grid grid-2" style="align-items: center; gap: 2.5rem;">
-                <div>
-                    <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7;">
-                        I am currently in my second year pursuing a Bachelor's in Mechanical Engineering. Alongside my engineering studies, I enjoy creating software side projects and exploring programming.
-                    </p>
-                    <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.7;">
-                        I am fully fledged in AutoCAD for 2D/3D drafting and technical drawing, and I have foundational experience in web development (HTML, CSS, JavaScript basics), Python scripting, and Flutter mobile app development.
-                    </p>
+            <div style="margin-bottom: 2.5rem;">
+                <span class="spec-badge" style="margin-bottom: 0.75rem;"><i data-feather="user" style="width: 13px; height: 13px;"></i> PROFILE // INTRO</span>
+                <h2 class="text-gradient">About Me</h2>
+            </div>
+
+            <div class="bento-grid">
+                <!-- Bio Card (7 Cols) -->
+                <div class="card bento-card col-span-7">
+                    <div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+                            <h3 style="color: var(--text-primary); display: flex; align-items: center; gap: 0.6rem;">
+                                <i data-feather="terminal" style="color: var(--accent-color); width: 22px; height: 22px;"></i>
+                                Mechanical Engineering & Code
+                            </h3>
+                            <span class="spec-badge">STAGE: Y2</span>
+                        </div>
+                        <p style="font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.75;">
+                            I am currently in my second year pursuing a Bachelor's in Mechanical Engineering. Alongside my engineering studies, I enjoy creating software side projects and exploring programming.
+                        </p>
+                        <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.75;">
+                            I am fully fledged in AutoCAD for 2D/3D drafting and technical drawing, and I have foundational experience in web development (HTML, CSS, JavaScript basics), Python scripting, and Flutter mobile app development.
+                        </p>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                        <span class="tech-tag">Engineering Drafting</span>
+                        <span class="tech-tag">CAD Modeling</span>
+                        <span class="tech-tag">Applied Software</span>
+                        <span class="tech-tag">Prototyping</span>
+                    </div>
                 </div>
-                <div class="card glass" style="padding: 2.25rem 2rem;">
-                    <div style="display: flex; flex-direction: column; gap: 1.25rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-                            <span style="color: var(--text-secondary);">Education</span>
-                            <span style="font-weight: 600;">2nd Year Mech. Engineering</span>
+
+                <!-- Quick Specs & Info Card (5 Cols) -->
+                <div class="card bento-card col-span-5">
+                    <div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+                            <h3 style="display: flex; align-items: center; gap: 0.6rem;">
+                                <i data-feather="sliders" style="color: var(--accent-color); width: 22px; height: 22px;"></i>
+                                Technical Profile
+                            </h3>
+                            <span class="spec-badge">VERIFIED</span>
                         </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-                            <span style="color: var(--text-secondary);">CAD Proficiency</span>
-                            <span style="font-weight: 600; color: var(--accent-color);">AutoCAD (Fully Fledged)</span>
+
+                        <div style="display: flex; flex-direction: column; gap: 1.35rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                                <span style="color: var(--text-secondary); font-size: 0.95rem;">Education</span>
+                                <span style="font-weight: 600; text-align: right; color: var(--text-primary);">2nd Year Mech. Engineering</span>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                                <span style="color: var(--text-secondary); font-size: 0.95rem;">CAD Proficiency</span>
+                                <span style="font-weight: 600; color: var(--accent-color); text-align: right;">AutoCAD (Fully Fledged)</span>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                                <span style="color: var(--text-secondary); font-size: 0.95rem;">Programming</span>
+                                <span style="font-weight: 600; text-align: right; color: var(--text-primary);">HTML/CSS/JS, Python, Flutter</span>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="color: var(--text-secondary); font-size: 0.95rem;">GitHub Profile</span>
+                                <a href="https://github.com/IM-LL" target="_blank" rel="noopener" style="color: var(--accent-color); font-weight: 600; display: inline-flex; align-items: center; gap: 0.35rem;">
+                                    github.com/IM-LL <i data-feather="arrow-up-right" style="width: 14px; height: 14px;"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-                            <span style="color: var(--text-secondary);">Programming</span>
-                            <span style="font-weight: 600;">HTML/CSS/JS, Python, Flutter</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-                            <span style="color: var(--text-secondary);">GitHub Profile</span>
-                            <a href="https://github.com/IM-LL" target="_blank" rel="noopener" style="color: var(--accent-color); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem;">
-                                github.com/IM-LL <i data-feather="arrow-up-right" style="width: 14px; height: 14px;"></i>
-                            </a>
-                        </div>
+                    </div>
+
+                    <div style="margin-top: 1.75rem; background: rgba(56, 189, 248, 0.05); padding: 0.9rem 1.1rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">
+                            <strong style="color: var(--accent-color);">Current Focus:</strong> Integrating computational methods & CAD precision with practical engineering workflows.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
+        <!-- Skills Section (Clean Bento Grid) -->
         <section id="skills" class="section container reveal">
-            <h2 class="text-gradient">Skills & Tools</h2>
-            <div class="grid grid-3" style="gap: 2rem;">
-                <div class="card" style="padding: 2.25rem 1.75rem;">
-                    <i data-feather="compass"
-                        style="width: 32px; height: 32px; color: var(--accent-color); margin-bottom: 1rem;"></i>
-                    <h3 style="margin-bottom: 0.75rem;">CAD & Mechanical</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.6;">AutoCAD (Fully Fledged), 2D Drafting, 3D Modeling, Engineering Drawing & Schematics</p>
+            <div style="margin-bottom: 2.5rem;">
+                <span class="spec-badge" style="margin-bottom: 0.75rem;"><i data-feather="tool" style="width: 13px; height: 13px;"></i> CAPABILITIES // TOOLKIT</span>
+                <h2 class="text-gradient">Skills & Tools</h2>
+                <p style="color: var(--text-secondary); max-width: 620px;">
+                    A multi-disciplinary blend of precision mechanical CAD engineering and modern software prototyping capabilities.
+                </p>
+            </div>
+
+            <div class="bento-grid">
+                <!-- Bento Card 1: CAD & Mechanical (Featured - 7 Cols) -->
+                <div class="card bento-card col-span-7">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <div style="background: rgba(56, 189, 248, 0.12); padding: 0.75rem; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
+                                    <i data-feather="compass" style="width: 28px; height: 28px; color: var(--accent-color);"></i>
+                                </div>
+                                <div>
+                                    <h3 style="margin-bottom: 0.2rem;">CAD & Mechanical</h3>
+                                    <span style="font-size: 0.85rem; color: var(--accent-color); font-weight: 500;">Core Discipline & Drafting</span>
+                                </div>
+                            </div>
+                            <span class="spec-badge">FLAGSHIP</span>
+                        </div>
+
+                        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+                            AutoCAD (Fully Fledged), 2D Drafting, 3D Modeling, Engineering Drawing & Schematics. Specializing in mechanical component orthographics, section views, precision tolerances, and CAD assembly standards.
+                        </p>
+                    </div>
+
+                    <div>
+                        <!-- Interactive Precision Specs -->
+                        <div style="background: rgba(10, 15, 26, 0.6); padding: 0.85rem 1rem; border-radius: 10px; border: 1px solid var(--border-color); margin-bottom: 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; color: #7dd3fc; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+                            <span>DIM: 2D/3D ORTHOGRAPHIC</span>
+                            <span>TOL: ACCURATE</span>
+                            <span>CAD: DWG/DXF</span>
+                        </div>
+
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <span class="tech-tag">AutoCAD (Fully Fledged)</span>
+                            <span class="tech-tag">2D Drafting</span>
+                            <span class="tech-tag">3D Solid Modeling</span>
+                            <span class="tech-tag">Engineering Drawing</span>
+                            <span class="tech-tag">Mechanical Schematics</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="card" style="padding: 2.25rem 1.75rem;">
-                    <i data-feather="layout"
-                        style="width: 32px; height: 32px; color: var(--accent-color); margin-bottom: 1rem;"></i>
-                    <h3 style="margin-bottom: 0.75rem;">Web Development</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.6;">HTML5, CSS3, JavaScript (Basic level), Responsive Layouts, Glassmorphism UI</p>
+
+                <!-- Bento Card 2: Python & Automation (5 Cols) -->
+                <div class="card bento-card col-span-5">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <div style="background: rgba(56, 189, 248, 0.12); padding: 0.75rem; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
+                                    <i data-feather="terminal" style="width: 28px; height: 28px; color: var(--accent-color);"></i>
+                                </div>
+                                <div>
+                                    <h3 style="margin-bottom: 0.2rem;">Python Scripting</h3>
+                                    <span style="font-size: 0.85rem; color: var(--text-secondary);">Computational Logic</span>
+                                </div>
+                            </div>
+                            <span class="spec-badge">SCRIPTING</span>
+                        </div>
+
+                        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+                            Python for basic scripting, logic formulation, task automation, and mathematical computation. Focused on algorithm structuring and engineering problem solving.
+                        </p>
+                    </div>
+
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span class="tech-tag">Python 3</span>
+                        <span class="tech-tag">Scripting & Logic</span>
+                        <span class="tech-tag">Algorithm Basics</span>
+                        <span class="tech-tag">Automation</span>
+                    </div>
                 </div>
-                <div class="card" style="padding: 2.25rem 1.75rem;">
-                    <i data-feather="code"
-                        style="width: 32px; height: 32px; color: var(--accent-color); margin-bottom: 1rem;"></i>
-                    <h3 style="margin-bottom: 0.75rem;">Scripting & Mobile</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.6;">Python (Basic scripting & logic), Flutter (Basic UI apps), Git & GitHub workflow</p>
+
+                <!-- Bento Card 3: Web Development (6 Cols) -->
+                <div class="card bento-card col-span-6">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <div style="background: rgba(56, 189, 248, 0.12); padding: 0.75rem; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
+                                    <i data-feather="layout" style="width: 28px; height: 28px; color: var(--accent-color);"></i>
+                                </div>
+                                <div>
+                                    <h3 style="margin-bottom: 0.2rem;">Web Development</h3>
+                                    <span style="font-size: 0.85rem; color: var(--text-secondary);">Responsive & Modern UI</span>
+                                </div>
+                            </div>
+                            <span class="spec-badge">FRONTEND</span>
+                        </div>
+
+                        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+                            HTML5, CSS3, JavaScript (Basic level), Responsive Layouts, and Glassmorphism UI. Building lightweight, structured interfaces and digital showcases.
+                        </p>
+                    </div>
+
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3 / Bento Grid</span>
+                        <span class="tech-tag">JavaScript (Basic)</span>
+                        <span class="tech-tag">Glassmorphism</span>
+                    </div>
+                </div>
+
+                <!-- Bento Card 4: Flutter & Mobile (6 Cols) -->
+                <div class="card bento-card col-span-6">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <div style="background: rgba(56, 189, 248, 0.12); padding: 0.75rem; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
+                                    <i data-feather="smartphone" style="width: 28px; height: 28px; color: var(--accent-color);"></i>
+                                </div>
+                                <div>
+                                    <h3 style="margin-bottom: 0.2rem;">Mobile & Git</h3>
+                                    <span style="font-size: 0.85rem; color: var(--text-secondary);">Cross-Platform & Version Control</span>
+                                </div>
+                            </div>
+                            <span class="spec-badge">MOBILE // VCS</span>
+                        </div>
+
+                        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+                            Flutter (Basic UI apps), cross-platform widget composition, alongside Git & GitHub version control workflows for managing software and CAD repositories.
+                        </p>
+                    </div>
+
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Dart UI</span>
+                        <span class="tech-tag">Git Version Control</span>
+                        <span class="tech-tag">GitHub Flow</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- Projects Section (Bento Grid) -->
         <section id="projects" class="section container reveal">
             <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;">
                 <div>
-                    <h2 class="text-gradient" style="margin-bottom: 0.5rem;">Side Projects</h2>
-                    <p style="color: var(--text-secondary);">Personal projects and CAD explorations built for learning.</p>
+                    <span class="spec-badge" style="margin-bottom: 0.75rem;"><i data-feather="layers" style="width: 13px; height: 13px;"></i> SHOWCASE // REPOSITORIES</span>
+                    <h2 class="text-gradient" style="margin-bottom: 0.4rem;">Featured Side Projects</h2>
+                    <p style="color: var(--text-secondary);">Personal projects, mechanical drafting, and software explorations built for learning.</p>
                 </div>
                 <a href="works.html" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 0.5rem;">
                     View All Works <i data-feather="arrow-right"></i>
                 </a>
             </div>
-            <div class="grid grid-2" style="gap: 2rem;">
-                <!-- Project 1: AutoCAD Mechanical Drafts -->
-                <article class="card" style="padding: 2.25rem;">
-                    <div
-                        style="background: linear-gradient(135deg, #1c1010 0%, #0a0505 100%); height: 200px; border-radius: 8px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; border: 1px solid var(--border-color);">
-                        <div
-                            style="background: var(--accent-color); width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.35; position: absolute; top: 20%; left: 20%;">
+
+            <div class="bento-grid">
+                <!-- Project 1: AutoCAD Mechanical Drafts (Featured - 7 Cols) -->
+                <article class="card bento-card col-span-7">
+                    <div>
+                        <!-- Engineering Grid Blueprint Box Preview -->
+                        <div class="blueprint-box" style="height: 200px; margin-bottom: 1.5rem;">
+                            <div class="blueprint-glow" style="top: 20%; left: 30%;"></div>
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; z-index: 1;">
+                                <i data-feather="compass" style="width: 48px; height: 48px; color: var(--accent-color);"></i>
+                                <span class="spec-badge" style="background: rgba(10, 12, 16, 0.85);">DWG // MECHANICAL SCHEMATIC</span>
+                            </div>
                         </div>
-                        <i data-feather="compass"
-                            style="width: 48px; height: 48px; color: var(--text-secondary); z-index: 1;"></i>
+
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <h3>AutoCAD Mechanical Drafts</h3>
+                            <span class="spec-badge">ENGINEERING</span>
+                        </div>
+
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.65;">
+                            2D & 3D mechanical component drawings, assembly layouts, and precision drafting created in AutoCAD. Includes orthographic projections and machine part modeling.
+                        </p>
                     </div>
-                    <h3 style="margin-bottom: 0.5rem;">AutoCAD Mechanical Drafts</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
-                        2D & 3D mechanical component drawings, assembly layouts, and precision drafting created in AutoCAD.
-                    </p>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <span class="btn-outline"
-                                style="padding: 0.25rem 0.75rem; font-size: 0.8rem; border-radius: 4px;">AutoCAD</span>
-                            <span class="btn-outline"
-                                style="padding: 0.25rem 0.75rem; font-size: 0.8rem; border-radius: 4px;">2D/3D Drafting</span>
+
+                    <div>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                <span class="tech-tag">AutoCAD</span>
+                                <span class="tech-tag">2D/3D Drafting</span>
+                                <span class="tech-tag">Assemblies</span>
+                            </div>
+                            <a href="https://github.com/IM-LL/IM/tree/main/cad-projects" target="_blank" rel="noopener" class="btn-sm-outline">
+                                <i data-feather="folder" style="width: 14px; height: 14px;"></i> CAD Folder
+                            </a>
                         </div>
-                        <a href="https://github.com/IM-LL/IM/tree/main/cad-projects" target="_blank" rel="noopener" class="btn-outline" style="padding: 0.3rem 0.8rem; font-size: 0.85rem; border-radius: 6px; display: inline-flex; align-items: center; gap: 0.4rem;">
-                            <i data-feather="folder" style="width: 14px; height: 14px;"></i> CAD Folder
-                        </a>
                     </div>
                 </article>
 
-                <!-- Project 2: Personal Portfolio Website -->
-                <article class="card" style="padding: 2.25rem;">
-                    <div
-                        style="background: linear-gradient(135deg, #1c1010 0%, #0a0505 100%); height: 200px; border-radius: 8px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; border: 1px solid var(--border-color);">
-                        <div
-                            style="background: var(--accent-secondary); width: 80px; height: 80px; border-radius: 50%; filter: blur(40px); opacity: 0.35; position: absolute; bottom: 20%; right: 20%;">
+                <!-- Project 2: Personal Portfolio Website (5 Cols) -->
+                <article class="card bento-card col-span-5">
+                    <div>
+                        <!-- Engineering Grid Blueprint Box Preview -->
+                        <div class="blueprint-box" style="height: 200px; margin-bottom: 1.5rem;">
+                            <div class="blueprint-glow" style="bottom: 20%; right: 25%; background: var(--accent-secondary);"></div>
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; z-index: 1;">
+                                <i data-feather="globe" style="width: 48px; height: 48px; color: var(--accent-color);"></i>
+                                <span class="spec-badge" style="background: rgba(10, 12, 16, 0.85);">WEB // GLASSMORPHISM</span>
+                            </div>
                         </div>
-                        <i data-feather="globe"
-                            style="width: 48px; height: 48px; color: var(--text-secondary); z-index: 1;"></i>
+
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <h3>Personal Portfolio Website</h3>
+                            <span class="spec-badge">LIVE SITE</span>
+                        </div>
+
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.65;">
+                            A responsive personal website built from scratch using HTML, CSS, and basic JavaScript. Engineered with a dark glassmorphic UI and engineering grid theme.
+                        </p>
                     </div>
-                    <h3 style="margin-bottom: 0.5rem;">Personal Portfolio Website</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
-                        A responsive personal website built from scratch using HTML, CSS, and basic JavaScript.
-                    </p>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <span class="btn-outline"
-                                style="padding: 0.25rem 0.75rem; font-size: 0.8rem; border-radius: 4px;">HTML5</span>
-                            <span class="btn-outline"
-                                style="padding: 0.25rem 0.75rem; font-size: 0.8rem; border-radius: 4px;">CSS3</span>
-                            <span class="btn-outline"
-                                style="padding: 0.25rem 0.75rem; font-size: 0.8rem; border-radius: 4px;">JavaScript</span>
+
+                    <div>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                            <a href="https://github.com/IM-LL/IM" target="_blank" rel="noopener" class="btn-sm-outline">
+                                <i data-feather="github" style="width: 14px; height: 14px;"></i> Repository
+                            </a>
                         </div>
-                        <a href="https://github.com/IM-LL/IM" target="_blank" rel="noopener" class="btn-outline" style="padding: 0.3rem 0.8rem; font-size: 0.85rem; border-radius: 6px; display: inline-flex; align-items: center; gap: 0.4rem;">
-                            <i data-feather="github" style="width: 14px; height: 14px;"></i> Repository
-                        </a>
                     </div>
                 </article>
+
+                <!-- Project 3: Works Exploration Bento Banner (12 Cols) -->
+                <div class="card col-span-12" style="background: linear-gradient(135deg, rgba(14, 23, 42, 0.9) 0%, rgba(10, 15, 26, 0.95) 100%);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+                        <div style="max-width: 680px;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
+                                <span class="spec-badge"><i data-feather="archive" style="width: 13px; height: 13px;"></i> COMPLETE ARCHIVE</span>
+                                <span style="color: var(--accent-color); font-weight: 600; font-size: 0.85rem;">CAD + Web + Python + Flutter</span>
+                            </div>
+                            <h3 style="margin-bottom: 0.5rem; font-size: 1.45rem;">Looking for all technical projects & source code?</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.65; margin: 0;">
+                                Discover the dedicated Works directory with category filtering across CAD models, web apps, Python scripts, and Flutter mobile prototypes.
+                            </p>
+                        </div>
+                        <a href="works.html" class="btn btn-primary" style="white-space: nowrap;">
+                            Explore Full Works <i data-feather="arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Contact Section -->
         <section id="contact" class="section container reveal">
-            <div class="card glass" style="text-align: center; max-width: 640px; margin: 0 auto; padding: 3.5rem 2rem;">
+            <div class="card glass" style="text-align: center; max-width: 680px; margin: 0 auto; padding: 3.5rem 2rem; position: relative;">
+                <div class="blueprint-glow" style="top: -20px; left: 50%; transform: translateX(-50%); width: 200px; height: 120px; filter: blur(70px);"></div>
+                
+                <span class="spec-badge" style="margin-bottom: 1rem;"><i data-feather="send" style="width: 13px; height: 13px;"></i> GET IN TOUCH</span>
                 <h2 class="text-gradient" style="margin-bottom: 1rem;">Let's Connect</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.7;">
+                <p style="color: var(--text-secondary); margin-bottom: 2.25rem; font-size: 1.1rem; line-height: 1.75;">
                     Interested in discussing engineering, CAD projects, or software side projects? Feel free to reach out.
                 </p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; align-items: center;">
                     <a href="mailto:im00ll@proton.me" class="btn btn-primary"
-                        style="font-size: 1.05rem; padding: 0.875rem 2.25rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+                        style="font-size: 1rem; padding: 0.85rem 2.25rem;">
                         Say Hello <i data-feather="mail"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/isam-mohammed-27762720a/" target="_blank" rel="noopener" class="btn btn-outline"
-                        style="font-size: 1.05rem; padding: 0.875rem 2.25rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+                        style="font-size: 1rem; padding: 0.85rem 2.25rem;">
                         <i data-feather="linkedin"></i> LinkedIn
                     </a>
                 </div>
@@ -234,7 +460,7 @@
 
     <!-- Footer -->
     <footer class="container"
-        style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding: 2rem 1.5rem; margin-top: 0; background: transparent; flex-wrap: wrap; gap: 1rem;">
+        style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding: 2.25rem 1.5rem; margin-top: 0; background: transparent; flex-wrap: wrap; gap: 1.25rem;">
         <span style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 Isam Mohammed. All rights reserved.</span>
         <div style="display: flex; gap: 1.5rem; align-items: center;">
             <a href="https://github.com/IM-LL" target="_blank" rel="noopener" style="color: var(--text-secondary);" aria-label="GitHub"><i data-feather="github"></i></a>
