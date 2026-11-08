@@ -25,7 +25,7 @@
             document.documentElement.setAttribute('data-theme', theme);
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', () => {
-                    document.querySelectorAll('input#theme-toggle').forEach(el => { el.checked = (theme === 'dark'); });
+                    document.querySelectorAll('input#theme-toggle').forEach(el => { el.checked = (theme === 'light'); });
                 });
             }
         })();
@@ -292,6 +292,8 @@
             transform: translateX(24px);
         }
 
+        .switch-icon-moon { order: 1; }
+        .switch-icon-sun { order: 2; }
         .switch-icon-sun,
         .switch-icon-moon {
             width: 14px;
@@ -301,13 +303,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: color 0.2s ease;
         }
 
-        input:checked + .switch-rail .switch-icon-moon {
+        input:checked + .switch-rail .switch-icon-sun {
             color: var(--text-main);
         }
 
-        input:not(:checked) + .switch-rail .switch-icon-sun {
+        input:not(:checked) + .switch-rail .switch-icon-moon {
             color: var(--text-main);
         }
 

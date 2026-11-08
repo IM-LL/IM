@@ -21,11 +21,11 @@
             localStorage.setItem(STORAGE_KEY, theme);
         }
 
-        const isDark = theme === 'dark';
+        const isLight = theme === 'light';
         const toggles = document.querySelectorAll('input#theme-toggle');
         toggles.forEach(toggle => {
-            if (toggle.checked !== isDark) {
-                toggle.checked = isDark;
+            if (toggle.checked !== isLight) {
+                toggle.checked = isLight;
             }
         });
     };
@@ -37,7 +37,7 @@
     // Instant delegation for checkbox change
     document.addEventListener('change', (e) => {
         if (e.target && e.target.matches('input#theme-toggle')) {
-            const nextTheme = e.target.checked ? 'dark' : 'light';
+            const nextTheme = e.target.checked ? 'light' : 'dark';
             syncThemeUI(nextTheme, true);
         }
     });

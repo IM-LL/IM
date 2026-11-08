@@ -929,3 +929,65 @@ html[data-theme="light"] body {
 :root[data-theme="light"] .footer-copy {
     color: #475569 !important;
 }
+
+
+/* ==========================================================================
+   THEME TOGGLE STATE FIX (checked = Light Mode, unchecked = Dark Mode)
+   ========================================================================== */
+.switch-rail,
+.slider {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 5px !important;
+}
+
+.switch-icon-moon,
+.moon-icon {
+    order: 1 !important;
+    width: 14px !important;
+    height: 14px !important;
+    z-index: 1 !important;
+    transition: color 0.2s ease !important;
+}
+
+.switch-icon-sun,
+.sun-icon {
+    order: 2 !important;
+    width: 14px !important;
+    height: 14px !important;
+    z-index: 1 !important;
+    transition: color 0.2s ease !important;
+}
+
+/* Unchecked = Dark Mode (Knob at 0px over Moon on left) */
+.switch-rail::before,
+.slider::before {
+    transform: translateX(0) !important;
+}
+
+input:not(:checked) + .switch-rail .switch-icon-moon,
+input:not(:checked) + .slider .moon-icon {
+    color: var(--text-main) !important;
+}
+
+input:not(:checked) + .switch-rail .switch-icon-sun,
+input:not(:checked) + .slider .sun-icon {
+    color: var(--text-muted) !important;
+}
+
+/* Checked = Light Mode (Knob at 24px over Sun on right) */
+input:checked + .switch-rail::before,
+input:checked + .slider::before {
+    transform: translateX(24px) !important;
+}
+
+input:checked + .switch-rail .switch-icon-sun,
+input:checked + .slider .sun-icon {
+    color: var(--text-main) !important;
+}
+
+input:checked + .switch-rail .switch-icon-moon,
+input:checked + .slider .moon-icon {
+    color: var(--text-muted) !important;
+}
