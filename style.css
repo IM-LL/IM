@@ -467,10 +467,7 @@ footer {
 
 /* Theme Slider Toggle */
 .theme-switch-wrapper {
-    position: fixed;
-    top: 1.25rem;
-    right: 1.5rem;
-    z-index: 1100;
+    position: relative;
     display: flex;
     align-items: center;
     background: var(--surface-color-transparent);

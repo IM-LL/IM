@@ -7,15 +7,959 @@
     <title>Isam Mohammed | Mechanical Engineering & Portfolio</title>
     <meta name="description" content="Portfolio of Isam Mohammed - 2nd Year Mechanical Engineering Student & Tech Creator. CAD drafting, Python scripting, Flutter apps, and web development.">
 
-    <!-- Fonts -->
+    <!-- Preconnect & Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- CSS -->
+    <!-- CSS Links & Production Layout Engine -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Embedded Pure CSS Production Layout & Spacing Engine -->
+    <style>
+        /* ==========================================================================
+           ROOT DESIGN TOKENS & RESET
+           ========================================================================== */
+        :root {
+            --bg-primary: #0a0c10;
+            --surface-card: rgba(17, 24, 39, 0.72);
+            --surface-elevated: rgba(22, 30, 48, 0.85);
+            --surface-border: rgba(56, 189, 248, 0.16);
+            --surface-border-hover: rgba(56, 189, 248, 0.45);
+            --cyan-accent: #38bdf8;
+            --cyan-hover: #7dd3fc;
+            --cyan-glow: rgba(56, 189, 248, 0.22);
+            --cyan-subtle: rgba(56, 189, 248, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --font-head: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-code: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            --header-h: 74px;
+            --max-w: 1200px;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f8fafc;
+            --surface-card: rgba(255, 255, 255, 0.85);
+            --surface-elevated: rgba(241, 245, 249, 0.95);
+            --surface-border: rgba(2, 132, 199, 0.18);
+            --surface-border-hover: rgba(2, 132, 199, 0.45);
+            --cyan-accent: #0284c7;
+            --cyan-hover: #0369a1;
+            --cyan-glow: rgba(2, 132, 199, 0.16);
+            --cyan-subtle: rgba(2, 132, 199, 0.06);
+            --text-main: #0f172a;
+            --text-muted: #475569;
+        }
+
+        /* Box-Sizing & Layout Isolation */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-family: var(--font-sans);
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+            line-height: 1.6;
+            -webkit-text-size-adjust: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-color: var(--bg-primary);
+            background-image: 
+                linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+                radial-gradient(circle 800px at 50% -10%, rgba(56, 189, 248, 0.12), transparent 70%);
+            background-size: 36px 36px, 36px 36px, 100% 100%;
+            background-position: -1px -1px, -1px -1px, 0 0;
+            background-attachment: fixed;
+        }
+
+        /* Container & Section Flow Controls */
+        .site-container {
+            width: 100%;
+            max-width: var(--max-w);
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: clamp(1.15rem, 3.5vw, 2rem);
+            padding-right: clamp(1.15rem, 3.5vw, 2rem);
+        }
+
+        .site-section {
+            padding-top: clamp(3.5rem, 6vw, 5.5rem);
+            padding-bottom: clamp(3.5rem, 6vw, 5.5rem);
+            position: relative;
+        }
+
+        /* ==========================================================================
+           HEADER & NAVIGATION (NO POSITION CONFLICTS)
+           ========================================================================== */
+        header.glass-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: var(--header-h);
+            z-index: 1000;
+            background: rgba(10, 12, 16, 0.78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--surface-border);
+            display: flex;
+            align-items: center;
+        }
+
+        [data-theme="light"] header.glass-nav {
+            background: rgba(255, 255, 255, 0.82);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 1.25rem;
+        }
+
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            text-decoration: none;
+            color: var(--text-main);
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 1.35rem;
+            letter-spacing: -0.02em;
+            flex-shrink: 0;
+        }
+
+        .brand-logo img {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            border: 1px solid var(--surface-border);
+            display: block;
+        }
+
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .nav-links-list {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links-list a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+            padding: 0.25rem 0;
+        }
+
+        .nav-links-list a:hover,
+        .nav-links-list a.active {
+            color: var(--cyan-accent);
+        }
+
+        .nav-links-list a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--cyan-accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.25s ease;
+        }
+
+        .nav-links-list a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .header-actions-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        /* In-Flow Theme Switch (Prevents Floating Overlap) */
+        .theme-switch-inline {
+            position: static !important;
+            display: flex;
+            align-items: center;
+            background: var(--cyan-subtle);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 3px;
+            border-radius: 100px;
+            border: 1px solid var(--surface-border);
+            box-shadow: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .theme-switch-inline:hover {
+            border-color: var(--cyan-accent);
+        }
+
+        .theme-switch-control {
+            display: inline-block;
+            height: 30px;
+            position: relative;
+            width: 54px;
+        }
+
+        .theme-switch-control input {
+            display: none;
+        }
+
+        .switch-rail {
+            background-color: var(--surface-card);
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: 0.3s;
+            border-radius: 30px;
+            border: 1px solid var(--surface-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5px;
+            overflow: hidden;
+        }
+
+        .switch-rail::before {
+            background-color: var(--cyan-accent);
+            bottom: 3px;
+            content: "";
+            height: 22px;
+            left: 3px;
+            position: absolute;
+            transition: 0.3s;
+            width: 22px;
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 8px var(--cyan-glow);
+        }
+
+        input:checked + .switch-rail::before {
+            transform: translateX(24px);
+        }
+
+        .switch-icon-sun,
+        .switch-icon-moon {
+            width: 14px;
+            height: 14px;
+            z-index: 1;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        input:checked + .switch-rail .switch-icon-moon {
+            color: var(--text-main);
+        }
+
+        input:not(:checked) + .switch-rail .switch-icon-sun {
+            color: var(--text-main);
+        }
+
+        .mobile-hamburger {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 0.45rem;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-hamburger:hover {
+            border-color: var(--surface-border);
+            background: var(--cyan-subtle);
+        }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        #hero {
+            min-height: calc(100svh - var(--header-h));
+            display: flex;
+            align-items: center;
+            padding-top: calc(var(--header-h) + 1.5rem);
+            padding-bottom: clamp(2.5rem, 5vw, 4rem);
+        }
+
+        .hero-layout {
+            max-width: 840px;
+            width: 100%;
+        }
+
+        /* Live Status Pill */
+        .live-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.4rem 1rem;
+            border-radius: 9999px;
+            background: var(--cyan-subtle);
+            border: 1px solid rgba(56, 189, 248, 0.32);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            font-size: clamp(0.78rem, 1.5vw, 0.85rem);
+            font-weight: 600;
+            letter-spacing: 0.025em;
+            color: var(--cyan-accent);
+            box-shadow: 0 0 16px var(--cyan-glow);
+            margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
+            max-width: 100%;
+            transition: all 0.25s ease;
+        }
+
+        .live-status-pill:hover {
+            border-color: var(--cyan-accent);
+            box-shadow: 0 0 22px var(--cyan-glow);
+            transform: translateY(-1px);
+        }
+
+        .radar-ping-wrap {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 10px;
+            height: 10px;
+            flex-shrink: 0;
+        }
+
+        .radar-ping-wave {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: var(--cyan-accent);
+            opacity: 0.75;
+            animation: radarPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        .radar-ping-core {
+            position: relative;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--cyan-accent);
+            box-shadow: 0 0 8px var(--cyan-accent);
+        }
+
+        @keyframes radarPing {
+            75%, 100% {
+                transform: scale(2.4);
+                opacity: 0;
+            }
+        }
+
+        /* Typography Scales */
+        .hero-title {
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: clamp(2.15rem, 5.5vw + 0.25rem, 4.25rem);
+            line-height: 1.12;
+            letter-spacing: -0.03em;
+            margin-bottom: clamp(1rem, 2vw, 1.35rem);
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 25%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        [data-theme="light"] .text-gradient {
+            background: linear-gradient(135deg, #0f172a 35%, #0284c7 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+            color: var(--text-muted);
+            max-width: 680px;
+            margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+            line-height: 1.75;
+        }
+
+        /* Hero Action Buttons */
+        .hero-cta-group {
+            display: flex;
+            gap: 0.85rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn-core {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.75rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            font-family: var(--font-head);
+            letter-spacing: 0.01em;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            white-space: nowrap;
+        }
+
+        .btn-primary-cyan {
+            background: var(--cyan-accent);
+            color: #0a0c10 !important;
+            border: 1px solid var(--cyan-accent);
+            box-shadow: 0 0 20px var(--cyan-glow);
+        }
+
+        .btn-primary-cyan:hover {
+            background: var(--cyan-hover);
+            border-color: var(--cyan-hover);
+            box-shadow: 0 0 28px rgba(56, 189, 248, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-glass {
+            background: var(--cyan-subtle);
+            border: 1px solid var(--surface-border);
+            color: var(--text-main);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .btn-outline-glass:hover {
+            border-color: var(--cyan-accent);
+            color: var(--cyan-accent);
+            background: rgba(56, 189, 248, 0.12);
+            box-shadow: 0 0 16px var(--cyan-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Spec Badges Strip */
+        .hero-specs-strip {
+            display: flex;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: clamp(2rem, 4vw, 3rem);
+            padding-top: clamp(1.25rem, 2.5vw, 1.75rem);
+            border-top: 1px solid var(--surface-border);
+        }
+
+        .spec-badge {
+            background: var(--cyan-subtle);
+            border: 1px solid var(--surface-border);
+            color: #7dd3fc;
+            font-size: clamp(0.72rem, 1.2vw, 0.78rem);
+            font-family: var(--font-code);
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            white-space: nowrap;
+        }
+
+        [data-theme="light"] .spec-badge {
+            color: #0369a1;
+        }
+
+        /* ==========================================================================
+           SECTION HEADERS (STANDARDIZED VERTICAL RHYTHM)
+           ========================================================================== */
+        .section-header-block {
+            margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+        }
+
+        .section-tag-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .section-title {
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: clamp(1.75rem, 3.5vw, 2.85rem);
+            line-height: 1.2;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            max-width: 640px;
+            font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+            line-height: 1.65;
+        }
+
+        /* ==========================================================================
+           BENTO GRID SYSTEM (DESKTOP / TABLET / MOBILE ALIGNED)
+           ========================================================================== */
+        .bento-grid-12 {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: clamp(1rem, 2vw, 1.5rem);
+            width: 100%;
+        }
+
+        .bento-card-root {
+            background: var(--surface-card);
+            border: 1px solid var(--surface-border);
+            border-radius: 16px;
+            padding: clamp(1.35rem, 2.5vw, 2rem);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.5);
+            min-width: 0; /* Prevents flex/grid clipping */
+        }
+
+        .bento-card-root:hover {
+            border-color: var(--surface-border-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.7), 0 0 24px var(--cyan-glow);
+        }
+
+        /* Grid Spans */
+        .span-12 { grid-column: span 12; }
+        .span-7  { grid-column: span 7; }
+        .span-6  { grid-column: span 6; }
+        .span-5  { grid-column: span 5; }
+
+        /* Card Content Layout Utilities */
+        .card-top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 0;
+        }
+
+        .card-icon-avatar {
+            background: var(--cyan-subtle);
+            padding: 0.65rem;
+            border-radius: 10px;
+            border: 1px solid var(--surface-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cyan-accent);
+            flex-shrink: 0;
+        }
+
+        .card-title-text {
+            font-family: var(--font-head);
+            font-size: clamp(1.15rem, 2vw, 1.35rem);
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.25;
+        }
+
+        .card-sub-label {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+        }
+
+        .card-body-text {
+            color: var(--text-muted);
+            font-size: clamp(0.92rem, 1.4vw, 1rem);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Technical Info Key-Value Table */
+        .tech-spec-table {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            width: 100%;
+        }
+
+        .spec-table-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--surface-border);
+            font-size: 0.92rem;
+        }
+
+        .spec-table-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .spec-key {
+            color: var(--text-muted);
+            flex: 1 1 120px;
+        }
+
+        .spec-val {
+            font-weight: 600;
+            color: var(--text-main);
+            text-align: right;
+            flex: 1 1 160px;
+            min-width: 0;
+            overflow-wrap: break-word;
+        }
+
+        .spec-val a {
+            color: var(--cyan-accent);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .spec-val a:hover {
+            color: var(--cyan-hover);
+        }
+
+        /* Technology Pill Tags */
+        .tech-tags-wrap {
+            display: flex;
+            gap: 0.45rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .tech-tag-pill {
+            background: var(--cyan-subtle);
+            border: 1px solid var(--surface-border);
+            color: var(--text-muted);
+            padding: 0.25rem 0.65rem;
+            font-size: 0.78rem;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .bento-card-root:hover .tech-tag-pill {
+            border-color: rgba(56, 189, 248, 0.28);
+            color: var(--text-main);
+        }
+
+        /* Blueprint Schematic Preview Container */
+        .blueprint-schematic-box {
+            background: linear-gradient(135deg, rgba(14, 23, 42, 0.9) 0%, rgba(10, 15, 26, 0.95) 100%);
+            border-radius: 12px;
+            border: 1px solid var(--surface-border);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: clamp(160px, 22vw, 200px);
+            margin-bottom: 1.35rem;
+            background-image: 
+                linear-gradient(rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: -1px -1px;
+        }
+
+        .schematic-ambient-glow {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: var(--cyan-accent);
+            filter: blur(55px);
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        /* Card Action Row */
+        .card-action-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--surface-border);
+        }
+
+        .action-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.45rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--surface-border);
+            background: var(--cyan-subtle);
+            color: var(--text-main);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .action-link-btn:hover {
+            border-color: var(--cyan-accent);
+            color: var(--cyan-accent);
+            background: rgba(56, 189, 248, 0.15);
+            box-shadow: 0 0 12px var(--cyan-glow);
+        }
+
+        /* Banner Card Specific Spacing */
+        .banner-card-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .banner-text-col {
+            max-width: 680px;
+            flex: 1 1 320px;
+        }
+
+        /* ==========================================================================
+           CONTACT & FOOTER
+           ========================================================================== */
+        .contact-box-wrap {
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .contact-buttons-row {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 1.75rem;
+        }
+
+        footer.site-footer {
+            border-top: 1px solid var(--surface-border);
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            margin-top: 1rem;
+            background: transparent;
+        }
+
+        .footer-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+        }
+
+        .footer-copy {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 1.25rem;
+            align-items: center;
+        }
+
+        .footer-social-links a {
+            color: var(--text-muted);
+            transition: color 0.2s ease;
+        }
+
+        .footer-social-links a:hover {
+            color: var(--cyan-accent);
+        }
+
+        /* ==========================================================================
+           RESPONSIVE AUDIT BREAKPOINTS (<992px & <768px & <480px)
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .span-7,
+            .span-6,
+            .span-5 {
+                grid-column: span 12;
+            }
+
+            .bento-card-root {
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --header-h: 66px;
+            }
+
+            .mobile-hamburger {
+                display: flex;
+            }
+
+            .desktop-nav {
+                position: fixed;
+                top: var(--header-h);
+                left: 0;
+                width: 100%;
+                height: 0;
+                background: rgba(10, 12, 16, 0.96);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                overflow: hidden;
+                transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                border-bottom: 1px solid var(--surface-border);
+                z-index: 999;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            [data-theme="light"] .desktop-nav {
+                background: rgba(255, 255, 255, 0.98);
+            }
+
+            .desktop-nav.active {
+                height: calc(100svh - var(--header-h));
+            }
+
+            .nav-links-list {
+                flex-direction: column;
+                gap: 2rem;
+                padding: 2rem 0;
+            }
+
+            .nav-links-list a {
+                font-size: 1.35rem;
+            }
+
+            .bento-grid-12 {
+                grid-template-columns: 1fr;
+            }
+
+            .span-12, .span-7, .span-6, .span-5 {
+                grid-column: 1 / -1;
+            }
+
+            .banner-card-flex {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .card-action-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .action-link-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-flex {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-cta-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-cta-group .btn-core {
+                width: 100%;
+            }
+
+            .contact-buttons-row {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .contact-buttons-row .btn-core {
+                width: 100%;
+            }
+
+            .bento-card-root {
+                padding: 1.25rem 1rem;
+            }
+
+            .spec-table-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.2rem;
+            }
+
+            .spec-val {
+                text-align: left;
+            }
+        }
+    </style>
 
     <!-- Icons -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -25,38 +969,37 @@
 <body>
 
     <!-- Navigation Header -->
-    <header class="glass">
-        <div class="container"
-            style="display: flex; justify-content: space-between; align-items: center; height: 100%;">
-            <a href="#" class="logo"
-                style="display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-heading); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.02em;">
-                <img src="favicon.svg" alt="IM Logo" style="width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--border-color);">
-                <span>Isam<span class="text-cyan">.</span></span>
+    <header class="glass-nav">
+        <div class="site-container nav-wrapper">
+            <a href="#hero" class="brand-logo" aria-label="Isam Mohammed Portfolio">
+                <img src="favicon.svg" alt="IM Logo" width="34" height="34">
+                <span>Isam<span style="color: var(--cyan-accent);">.</span></span>
             </a>
 
-            <!-- Right Controls & Navigation -->
-            <div style="display: flex; gap: 1rem; align-items: center;">
-                <nav class="nav-menu">
-                    <ul style="display: flex; gap: 2.25rem;">
-                        <li><a href="#about" class="nav-link">About</a></li>
-                        <li><a href="#skills" class="nav-link">Skills</a></li>
-                        <li><a href="#projects" class="nav-link">Projects</a></li>
-                        <li><a href="works.html" class="nav-link">Work</a></li>
-                        <li><a href="#contact" class="nav-link">Contact</a></li>
-                    </ul>
-                </nav>
+            <!-- Primary Navigation Links -->
+            <nav class="desktop-nav" id="main-navigation">
+                <ul class="nav-links-list">
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="works.html" class="nav-link">Work</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
 
-                <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="theme-toggle">
-                        <input type="checkbox" id="theme-toggle" aria-label="Toggle Theme">
-                        <div class="slider">
-                            <i data-feather="sun" class="sun-icon"></i>
-                            <i data-feather="moon" class="moon-icon"></i>
+            <!-- Inline Header Actions (Theme Switch + Hamburger) -->
+            <div class="header-actions-group">
+                <div class="theme-switch-inline">
+                    <label class="theme-switch-control" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle" aria-label="Toggle Dark and Light Theme">
+                        <div class="switch-rail">
+                            <span class="switch-icon-sun"><i data-feather="sun"></i></span>
+                            <span class="switch-icon-moon"><i data-feather="moon"></i></span>
                         </div>
                     </label>
                 </div>
 
-                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                <button class="mobile-hamburger" id="menu-toggle-btn" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="main-navigation">
                     <i data-feather="menu"></i>
                 </button>
             </div>
@@ -66,43 +1009,44 @@
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section id="hero" class="container">
-            <div class="hero-content">
-                <!-- Live Status Badge -->
-                <div class="status-badge-container reveal">
-                    <div class="status-badge">
-                        <span class="pulse-indicator">
-                            <span class="pulse-ping"></span>
-                            <span class="pulse-dot"></span>
+        <section id="hero" class="site-container">
+            <div class="hero-layout">
+                <!-- Live Status Pill -->
+                <div class="reveal">
+                    <div class="live-status-pill">
+                        <span class="radar-ping-wrap">
+                            <span class="radar-ping-wave"></span>
+                            <span class="radar-ping-core"></span>
                         </span>
                         <span>2nd Year Mechanical Engineering Student</span>
                     </div>
                 </div>
 
-                <h1 class="text-gradient reveal delay-100" style="margin-bottom: 1.25rem;">
-                    Engineering & Digital Side Projects
+                <h1 class="hero-title text-gradient reveal delay-100">
+                    Engineering &amp; Digital Side Projects
                 </h1>
 
-                <p class="reveal delay-200" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 680px; margin-bottom: 2.5rem; line-height: 1.75;">
+                <p class="hero-desc reveal delay-200">
                     Hi, I'm Isam Mohammed. I study Mechanical Engineering and build web, mobile, and software side projects to learn and solve practical problems.
                 </p>
 
-                <div class="reveal delay-300" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-                    <a href="works.html" class="btn btn-primary">
+                <!-- Hero Action Buttons -->
+                <div class="hero-cta-group reveal delay-300">
+                    <a href="works.html" class="btn-core btn-primary-cyan">
                         View Side Projects <i data-feather="arrow-right"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/isam-mohammed-27762720a/" target="_blank" rel="noopener" class="btn btn-outline">
+                    <a href="https://www.linkedin.com/in/isam-mohammed-27762720a/" target="_blank" rel="noopener" class="btn-core btn-outline-glass">
                         <i data-feather="linkedin"></i> LinkedIn
                     </a>
-                    <a href="#contact" class="btn btn-outline">
+                    <a href="#contact" class="btn-core btn-outline-glass">
                         Get In Touch
                     </a>
                 </div>
 
                 <!-- Engineering Spec Pills Strip -->
-                <div class="reveal delay-400" style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 3.5rem; align-items: center;">
+                <div class="hero-specs-strip reveal delay-400">
                     <span class="spec-badge"><i data-feather="check-circle" style="width: 13px; height: 13px;"></i> AutoCAD 2D/3D</span>
-                    <span class="spec-badge"><i data-feather="cpu" style="width: 13px; height: 13px;"></i> Python & Scripting</span>
+                    <span class="spec-badge"><i data-feather="cpu" style="width: 13px; height: 13px;"></i> Python &amp; Scripting</span>
                     <span class="spec-badge"><i data-feather="smartphone" style="width: 13px; height: 13px;"></i> Flutter Apps</span>
                     <span class="spec-badge"><i data-feather="code" style="width: 13px; height: 13px;"></i> Modern Web UI</span>
                 </div>
@@ -110,347 +1054,360 @@
         </section>
 
         <!-- About Section (Bento Overview) -->
-        <section id="about" class="section container reveal">
-            <div style="margin-bottom: 2.5rem;">
-                <span class="spec-badge" style="margin-bottom: 0.75rem;"><i data-feather="user" style="width: 13px; height: 13px;"></i> PROFILE // INTRO</span>
-                <h2 class="text-gradient">About Me</h2>
+        <section id="about" class="site-section site-container reveal">
+            <div class="section-header-block">
+                <div class="section-tag-label">
+                    <span class="spec-badge"><i data-feather="user" style="width: 13px; height: 13px;"></i> PROFILE // INTRO</span>
+                </div>
+                <h2 class="section-title text-gradient">About Me</h2>
             </div>
 
-            <div class="bento-grid">
-                <!-- Bio Card (7 Cols) -->
-                <div class="card bento-card col-span-7">
+            <div class="bento-grid-12">
+                <!-- Bio Card (7 Columns on Desktop) -->
+                <article class="bento-card-root span-7">
                     <div>
-                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
-                            <h3 style="color: var(--text-primary); display: flex; align-items: center; gap: 0.6rem;">
-                                <i data-feather="terminal" style="color: var(--accent-color); width: 22px; height: 22px;"></i>
-                                Mechanical Engineering & Code
-                            </h3>
+                        <div class="card-top-header">
+                            <div class="card-title-group">
+                                <div class="card-icon-avatar">
+                                    <i data-feather="terminal" style="width: 22px; height: 22px;"></i>
+                                </div>
+                                <h3 class="card-title-text">Mechanical Engineering &amp; Code</h3>
+                            </div>
                             <span class="spec-badge">STAGE: Y2</span>
                         </div>
-                        <p style="font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.75;">
+                        <p class="card-body-text">
                             I am currently in my second year pursuing a Bachelor's in Mechanical Engineering. Alongside my engineering studies, I enjoy creating software side projects and exploring programming.
                         </p>
-                        <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.75;">
+                        <p class="card-body-text" style="margin-bottom: 0;">
                             I am fully fledged in AutoCAD for 2D/3D drafting and technical drawing, and I have foundational experience in web development (HTML, CSS, JavaScript basics), Python scripting, and Flutter mobile app development.
                         </p>
                     </div>
 
-                    <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                        <span class="tech-tag">Engineering Drafting</span>
-                        <span class="tech-tag">CAD Modeling</span>
-                        <span class="tech-tag">Applied Software</span>
-                        <span class="tech-tag">Prototyping</span>
+                    <div class="card-action-footer">
+                        <div class="tech-tags-wrap">
+                            <span class="tech-tag-pill">Engineering Drafting</span>
+                            <span class="tech-tag-pill">CAD Modeling</span>
+                            <span class="tech-tag-pill">Applied Software</span>
+                            <span class="tech-tag-pill">Prototyping</span>
+                        </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Quick Specs & Info Card (5 Cols) -->
-                <div class="card bento-card col-span-5">
+                <!-- Technical Profile Specs (5 Columns on Desktop) -->
+                <article class="bento-card-root span-5">
                     <div>
-                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
-                            <h3 style="display: flex; align-items: center; gap: 0.6rem;">
-                                <i data-feather="sliders" style="color: var(--accent-color); width: 22px; height: 22px;"></i>
-                                Technical Profile
-                            </h3>
+                        <div class="card-top-header">
+                            <div class="card-title-group">
+                                <div class="card-icon-avatar">
+                                    <i data-feather="sliders" style="width: 22px; height: 22px;"></i>
+                                </div>
+                                <h3 class="card-title-text">Technical Profile</h3>
+                            </div>
                             <span class="spec-badge">VERIFIED</span>
                         </div>
 
-                        <div style="display: flex; flex-direction: column; gap: 1.35rem;">
-                            <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
-                                <span style="color: var(--text-secondary); font-size: 0.95rem;">Education</span>
-                                <span style="font-weight: 600; text-align: right; color: var(--text-primary);">2nd Year Mech. Engineering</span>
+                        <div class="tech-spec-table">
+                            <div class="spec-table-row">
+                                <span class="spec-key">Education</span>
+                                <span class="spec-val">2nd Year Mech. Engineering</span>
                             </div>
 
-                            <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
-                                <span style="color: var(--text-secondary); font-size: 0.95rem;">CAD Proficiency</span>
-                                <span style="font-weight: 600; color: var(--accent-color); text-align: right;">AutoCAD (Fully Fledged)</span>
+                            <div class="spec-table-row">
+                                <span class="spec-key">CAD Proficiency</span>
+                                <span class="spec-val" style="color: var(--cyan-accent);">AutoCAD (Fully Fledged)</span>
                             </div>
 
-                            <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
-                                <span style="color: var(--text-secondary); font-size: 0.95rem;">Programming</span>
-                                <span style="font-weight: 600; text-align: right; color: var(--text-primary);">HTML/CSS/JS, Python, Flutter</span>
+                            <div class="spec-table-row">
+                                <span class="spec-key">Programming</span>
+                                <span class="spec-val">HTML/CSS/JS, Python, Flutter</span>
                             </div>
 
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <span style="color: var(--text-secondary); font-size: 0.95rem;">GitHub Profile</span>
-                                <a href="https://github.com/IM-LL" target="_blank" rel="noopener" style="color: var(--accent-color); font-weight: 600; display: inline-flex; align-items: center; gap: 0.35rem;">
-                                    github.com/IM-LL <i data-feather="arrow-up-right" style="width: 14px; height: 14px;"></i>
-                                </a>
+                            <div class="spec-table-row">
+                                <span class="spec-key">GitHub Profile</span>
+                                <span class="spec-val">
+                                    <a href="https://github.com/IM-LL" target="_blank" rel="noopener">
+                                        github.com/IM-LL <i data-feather="arrow-up-right" style="width: 14px; height: 14px;"></i>
+                                    </a>
+                                </span>
                             </div>
                         </div>
                     </div>
 
-                    <div style="margin-top: 1.75rem; background: rgba(56, 189, 248, 0.05); padding: 0.9rem 1.1rem; border-radius: 10px; border: 1px solid var(--border-color);">
-                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">
-                            <strong style="color: var(--accent-color);">Current Focus:</strong> Integrating computational methods & CAD precision with practical engineering workflows.
+                    <div style="margin-top: 1.5rem; background: var(--cyan-subtle); padding: 0.85rem 1rem; border-radius: 10px; border: 1px solid var(--surface-border);">
+                        <p style="font-size: 0.84rem; color: var(--text-muted); margin: 0; line-height: 1.55;">
+                            <strong style="color: var(--cyan-accent);">Current Focus:</strong> Integrating computational methods &amp; CAD precision with practical engineering workflows.
                         </p>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
 
         <!-- Skills Section (Clean Bento Grid) -->
-        <section id="skills" class="section container reveal">
-            <div style="margin-bottom: 2.5rem;">
-                <span class="spec-badge" style="margin-bottom: 0.75rem;"><i data-feather="tool" style="width: 13px; height: 13px;"></i> CAPABILITIES // TOOLKIT</span>
-                <h2 class="text-gradient">Skills & Tools</h2>
-                <p style="color: var(--text-secondary); max-width: 620px;">
+        <section id="skills" class="site-section site-container reveal">
+            <div class="section-header-block">
+                <div class="section-tag-label">
+                    <span class="spec-badge"><i data-feather="tool" style="width: 13px; height: 13px;"></i> CAPABILITIES // TOOLKIT</span>
+                </div>
+                <h2 class="section-title text-gradient">Skills &amp; Tools</h2>
+                <p class="section-subtitle">
                     A multi-disciplinary blend of precision mechanical CAD engineering and modern software prototyping capabilities.
                 </p>
             </div>
 
-            <div class="bento-grid">
-                <!-- Bento Card 1: CAD & Mechanical (Featured - 7 Cols) -->
-                <div class="card bento-card col-span-7">
+            <div class="bento-grid-12">
+                <!-- Bento Card 1: CAD & Mechanical (Featured - 7 Columns) -->
+                <article class="bento-card-root span-7">
                     <div>
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem;">
-                            <div style="display: flex; align-items: center; gap: 0.75rem;">
-                                <div style="background: rgba(56, 189, 248, 0.12); padding: 0.75rem; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
-                                    <i data-feather="compass" style="width: 28px; height: 28px; color: var(--accent-color);"></i>
+                        <div class="card-top-header">
+                            <div class="card-title-group">
+                                <div class="card-icon-avatar">
+                                    <i data-feather="compass" style="width: 26px; height: 26px;"></i>
                                 </div>
                                 <div>
-                                    <h3 style="margin-bottom: 0.2rem;">CAD & Mechanical</h3>
-                                    <span style="font-size: 0.85rem; color: var(--accent-color); font-weight: 500;">Core Discipline & Drafting</span>
+                                    <h3 class="card-title-text">CAD &amp; Mechanical</h3>
+                                    <p class="card-sub-label" style="color: var(--cyan-accent); font-weight: 500;">Core Discipline &amp; Drafting</p>
                                 </div>
                             </div>
                             <span class="spec-badge">FLAGSHIP</span>
                         </div>
 
-                        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-                            AutoCAD (Fully Fledged), 2D Drafting, 3D Modeling, Engineering Drawing & Schematics. Specializing in mechanical component orthographics, section views, precision tolerances, and CAD assembly standards.
+                        <p class="card-body-text">
+                            AutoCAD (Fully Fledged), 2D Drafting, 3D Modeling, Engineering Drawing &amp; Schematics. Specializing in mechanical component orthographics, section views, precision tolerances, and CAD assembly standards.
                         </p>
                     </div>
 
                     <div>
-                        <!-- Interactive Precision Specs -->
-                        <div style="background: rgba(10, 15, 26, 0.6); padding: 0.85rem 1rem; border-radius: 10px; border: 1px solid var(--border-color); margin-bottom: 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; color: #7dd3fc; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+                        <!-- Dimension Indicator Box -->
+                        <div style="background: rgba(10, 15, 26, 0.6); padding: 0.75rem 0.95rem; border-radius: 8px; border: 1px solid var(--surface-border); margin-bottom: 1.25rem; font-family: var(--font-code); font-size: 0.78rem; color: #7dd3fc; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
                             <span>DIM: 2D/3D ORTHOGRAPHIC</span>
                             <span>TOL: ACCURATE</span>
                             <span>CAD: DWG/DXF</span>
                         </div>
 
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <span class="tech-tag">AutoCAD (Fully Fledged)</span>
-                            <span class="tech-tag">2D Drafting</span>
-                            <span class="tech-tag">3D Solid Modeling</span>
-                            <span class="tech-tag">Engineering Drawing</span>
-                            <span class="tech-tag">Mechanical Schematics</span>
+                        <div class="tech-tags-wrap">
+                            <span class="tech-tag-pill">AutoCAD (Fully Fledged)</span>
+                            <span class="tech-tag-pill">2D Drafting</span>
+                            <span class="tech-tag-pill">3D Solid Modeling</span>
+                            <span class="tech-tag-pill">Engineering Drawing</span>
+                            <span class="tech-tag-pill">Mechanical Schematics</span>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Bento Card 2: Python & Automation (5 Cols) -->
-                <div class="card bento-card col-span-5">
+                <!-- Bento Card 2: Python & Automation (5 Columns) -->
+                <article class="bento-card-root span-5">
                     <div>
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem;">
-                            <div style="display: flex; align-items: center; gap: 0.75rem;">
-                                <div style="background: rgba(56, 189, 248, 0.12); padding: 0.75rem; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
-                                    <i data-feather="terminal" style="width: 28px; height: 28px; color: var(--accent-color);"></i>
+                        <div class="card-top-header">
+                            <div class="card-title-group">
+                                <div class="card-icon-avatar">
+                                    <i data-feather="terminal" style="width: 26px; height: 26px;"></i>
                                 </div>
                                 <div>
-                                    <h3 style="margin-bottom: 0.2rem;">Python Scripting</h3>
-                                    <span style="font-size: 0.85rem; color: var(--text-secondary);">Computational Logic</span>
+                                    <h3 class="card-title-text">Python Scripting</h3>
+                                    <p class="card-sub-label">Computational Logic</p>
                                 </div>
                             </div>
                             <span class="spec-badge">SCRIPTING</span>
                         </div>
 
-                        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+                        <p class="card-body-text">
                             Python for basic scripting, logic formulation, task automation, and mathematical computation. Focused on algorithm structuring and engineering problem solving.
                         </p>
                     </div>
 
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        <span class="tech-tag">Python 3</span>
-                        <span class="tech-tag">Scripting & Logic</span>
-                        <span class="tech-tag">Algorithm Basics</span>
-                        <span class="tech-tag">Automation</span>
+                    <div class="tech-tags-wrap">
+                        <span class="tech-tag-pill">Python 3</span>
+                        <span class="tech-tag-pill">Scripting &amp; Logic</span>
+                        <span class="tech-tag-pill">Algorithm Basics</span>
+                        <span class="tech-tag-pill">Automation</span>
                     </div>
-                </div>
+                </article>
 
-                <!-- Bento Card 3: Web Development (6 Cols) -->
-                <div class="card bento-card col-span-6">
+                <!-- Bento Card 3: Web Development (6 Columns) -->
+                <article class="bento-card-root span-6">
                     <div>
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem;">
-                            <div style="display: flex; align-items: center; gap: 0.75rem;">
-                                <div style="background: rgba(56, 189, 248, 0.12); padding: 0.75rem; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
-                                    <i data-feather="layout" style="width: 28px; height: 28px; color: var(--accent-color);"></i>
+                        <div class="card-top-header">
+                            <div class="card-title-group">
+                                <div class="card-icon-avatar">
+                                    <i data-feather="layout" style="width: 26px; height: 26px;"></i>
                                 </div>
                                 <div>
-                                    <h3 style="margin-bottom: 0.2rem;">Web Development</h3>
-                                    <span style="font-size: 0.85rem; color: var(--text-secondary);">Responsive & Modern UI</span>
+                                    <h3 class="card-title-text">Web Development</h3>
+                                    <p class="card-sub-label">Responsive &amp; Modern UI</p>
                                 </div>
                             </div>
                             <span class="spec-badge">FRONTEND</span>
                         </div>
 
-                        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+                        <p class="card-body-text">
                             HTML5, CSS3, JavaScript (Basic level), Responsive Layouts, and Glassmorphism UI. Building lightweight, structured interfaces and digital showcases.
                         </p>
                     </div>
 
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        <span class="tech-tag">HTML5</span>
-                        <span class="tech-tag">CSS3 / Bento Grid</span>
-                        <span class="tech-tag">JavaScript (Basic)</span>
-                        <span class="tech-tag">Glassmorphism</span>
+                    <div class="tech-tags-wrap">
+                        <span class="tech-tag-pill">HTML5</span>
+                        <span class="tech-tag-pill">CSS3 / Bento Grid</span>
+                        <span class="tech-tag-pill">JavaScript (Basic)</span>
+                        <span class="tech-tag-pill">Glassmorphism</span>
                     </div>
-                </div>
+                </article>
 
-                <!-- Bento Card 4: Flutter & Mobile (6 Cols) -->
-                <div class="card bento-card col-span-6">
+                <!-- Bento Card 4: Flutter & Mobile (6 Columns) -->
+                <article class="bento-card-root span-6">
                     <div>
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem;">
-                            <div style="display: flex; align-items: center; gap: 0.75rem;">
-                                <div style="background: rgba(56, 189, 248, 0.12); padding: 0.75rem; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
-                                    <i data-feather="smartphone" style="width: 28px; height: 28px; color: var(--accent-color);"></i>
+                        <div class="card-top-header">
+                            <div class="card-title-group">
+                                <div class="card-icon-avatar">
+                                    <i data-feather="smartphone" style="width: 26px; height: 26px;"></i>
                                 </div>
                                 <div>
-                                    <h3 style="margin-bottom: 0.2rem;">Mobile & Git</h3>
-                                    <span style="font-size: 0.85rem; color: var(--text-secondary);">Cross-Platform & Version Control</span>
+                                    <h3 class="card-title-text">Mobile &amp; Git</h3>
+                                    <p class="card-sub-label">Cross-Platform &amp; Version Control</p>
                                 </div>
                             </div>
                             <span class="spec-badge">MOBILE // VCS</span>
                         </div>
 
-                        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Flutter (Basic UI apps), cross-platform widget composition, alongside Git & GitHub version control workflows for managing software and CAD repositories.
+                        <p class="card-body-text">
+                            Flutter (Basic UI apps), cross-platform widget composition, alongside Git &amp; GitHub version control workflows for managing software and CAD repositories.
                         </p>
                     </div>
 
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        <span class="tech-tag">Flutter</span>
-                        <span class="tech-tag">Dart UI</span>
-                        <span class="tech-tag">Git Version Control</span>
-                        <span class="tech-tag">GitHub Flow</span>
+                    <div class="tech-tags-wrap">
+                        <span class="tech-tag-pill">Flutter</span>
+                        <span class="tech-tag-pill">Dart UI</span>
+                        <span class="tech-tag-pill">Git Version Control</span>
+                        <span class="tech-tag-pill">GitHub Flow</span>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
 
         <!-- Projects Section (Bento Grid) -->
-        <section id="projects" class="section container reveal">
-            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;">
+        <section id="projects" class="site-section site-container reveal">
+            <div class="card-top-header" style="align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);">
                 <div>
-                    <span class="spec-badge" style="margin-bottom: 0.75rem;"><i data-feather="layers" style="width: 13px; height: 13px;"></i> SHOWCASE // REPOSITORIES</span>
-                    <h2 class="text-gradient" style="margin-bottom: 0.4rem;">Featured Side Projects</h2>
-                    <p style="color: var(--text-secondary);">Personal projects, mechanical drafting, and software explorations built for learning.</p>
+                    <div class="section-tag-label">
+                        <span class="spec-badge"><i data-feather="layers" style="width: 13px; height: 13px;"></i> SHOWCASE // REPOSITORIES</span>
+                    </div>
+                    <h2 class="section-title text-gradient" style="margin-bottom: 0.35rem;">Featured Side Projects</h2>
+                    <p class="section-subtitle">Personal projects, mechanical drafting, and software explorations built for learning.</p>
                 </div>
-                <a href="works.html" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                <a href="works.html" class="action-link-btn" style="padding: 0.65rem 1.25rem;">
                     View All Works <i data-feather="arrow-right"></i>
                 </a>
             </div>
 
-            <div class="bento-grid">
-                <!-- Project 1: AutoCAD Mechanical Drafts (Featured - 7 Cols) -->
-                <article class="card bento-card col-span-7">
+            <div class="bento-grid-12">
+                <!-- Project 1: AutoCAD Mechanical Drafts (Featured - 7 Columns) -->
+                <article class="bento-card-root span-7">
                     <div>
-                        <!-- Engineering Grid Blueprint Box Preview -->
-                        <div class="blueprint-box" style="height: 200px; margin-bottom: 1.5rem;">
-                            <div class="blueprint-glow" style="top: 20%; left: 30%;"></div>
-                            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; z-index: 1;">
-                                <i data-feather="compass" style="width: 48px; height: 48px; color: var(--accent-color);"></i>
-                                <span class="spec-badge" style="background: rgba(10, 12, 16, 0.85);">DWG // MECHANICAL SCHEMATIC</span>
+                        <!-- Schematic Graphic Box -->
+                        <div class="blueprint-schematic-box">
+                            <div class="schematic-ambient-glow" style="top: 20%; left: 30%;"></div>
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.65rem; z-index: 1;">
+                                <i data-feather="compass" style="width: 44px; height: 44px; color: var(--cyan-accent);"></i>
+                                <span class="spec-badge" style="background: rgba(10, 12, 16, 0.88);">DWG // MECHANICAL SCHEMATIC</span>
                             </div>
                         </div>
 
-                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                            <h3>AutoCAD Mechanical Drafts</h3>
+                        <div class="card-top-header" style="margin-bottom: 0.5rem;">
+                            <h3 class="card-title-text">AutoCAD Mechanical Drafts</h3>
                             <span class="spec-badge">ENGINEERING</span>
                         </div>
 
-                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.65;">
-                            2D & 3D mechanical component drawings, assembly layouts, and precision drafting created in AutoCAD. Includes orthographic projections and machine part modeling.
+                        <p class="card-body-text">
+                            2D &amp; 3D mechanical component drawings, assembly layouts, and precision drafting created in AutoCAD. Includes orthographic projections and machine part modeling.
                         </p>
                     </div>
 
-                    <div>
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
-                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                                <span class="tech-tag">AutoCAD</span>
-                                <span class="tech-tag">2D/3D Drafting</span>
-                                <span class="tech-tag">Assemblies</span>
-                            </div>
-                            <a href="https://github.com/IM-LL/IM/tree/main/cad-projects" target="_blank" rel="noopener" class="btn-sm-outline">
-                                <i data-feather="folder" style="width: 14px; height: 14px;"></i> CAD Folder
-                            </a>
+                    <div class="card-action-footer">
+                        <div class="tech-tags-wrap">
+                            <span class="tech-tag-pill">AutoCAD</span>
+                            <span class="tech-tag-pill">2D/3D Drafting</span>
+                            <span class="tech-tag-pill">Assemblies</span>
                         </div>
+                        <a href="https://github.com/IM-LL/IM/tree/main/cad-projects" target="_blank" rel="noopener" class="action-link-btn">
+                            <i data-feather="folder" style="width: 14px; height: 14px;"></i> CAD Folder
+                        </a>
                     </div>
                 </article>
 
-                <!-- Project 2: Personal Portfolio Website (5 Cols) -->
-                <article class="card bento-card col-span-5">
+                <!-- Project 2: Personal Portfolio Website (5 Columns) -->
+                <article class="bento-card-root span-5">
                     <div>
-                        <!-- Engineering Grid Blueprint Box Preview -->
-                        <div class="blueprint-box" style="height: 200px; margin-bottom: 1.5rem;">
-                            <div class="blueprint-glow" style="bottom: 20%; right: 25%; background: var(--accent-secondary);"></div>
-                            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; z-index: 1;">
-                                <i data-feather="globe" style="width: 48px; height: 48px; color: var(--accent-color);"></i>
-                                <span class="spec-badge" style="background: rgba(10, 12, 16, 0.85);">WEB // GLASSMORPHISM</span>
+                        <!-- Schematic Graphic Box -->
+                        <div class="blueprint-schematic-box">
+                            <div class="schematic-ambient-glow" style="bottom: 20%; right: 25%; background: #0ea5e9;"></div>
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.65rem; z-index: 1;">
+                                <i data-feather="globe" style="width: 44px; height: 44px; color: var(--cyan-accent);"></i>
+                                <span class="spec-badge" style="background: rgba(10, 12, 16, 0.88);">WEB // GLASSMORPHISM</span>
                             </div>
                         </div>
 
-                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                            <h3>Personal Portfolio Website</h3>
+                        <div class="card-top-header" style="margin-bottom: 0.5rem;">
+                            <h3 class="card-title-text">Personal Portfolio Website</h3>
                             <span class="spec-badge">LIVE SITE</span>
                         </div>
 
-                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.65;">
+                        <p class="card-body-text">
                             A responsive personal website built from scratch using HTML, CSS, and basic JavaScript. Engineered with a dark glassmorphic UI and engineering grid theme.
                         </p>
                     </div>
 
-                    <div>
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
-                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                                <span class="tech-tag">HTML5</span>
-                                <span class="tech-tag">CSS3</span>
-                                <span class="tech-tag">JavaScript</span>
-                            </div>
-                            <a href="https://github.com/IM-LL/IM" target="_blank" rel="noopener" class="btn-sm-outline">
-                                <i data-feather="github" style="width: 14px; height: 14px;"></i> Repository
-                            </a>
+                    <div class="card-action-footer">
+                        <div class="tech-tags-wrap">
+                            <span class="tech-tag-pill">HTML5</span>
+                            <span class="tech-tag-pill">CSS3</span>
+                            <span class="tech-tag-pill">JavaScript</span>
                         </div>
+                        <a href="https://github.com/IM-LL/IM" target="_blank" rel="noopener" class="action-link-btn">
+                            <i data-feather="github" style="width: 14px; height: 14px;"></i> Repository
+                        </a>
                     </div>
                 </article>
 
-                <!-- Project 3: Works Exploration Bento Banner (12 Cols) -->
-                <div class="card col-span-12" style="background: linear-gradient(135deg, rgba(14, 23, 42, 0.9) 0%, rgba(10, 15, 26, 0.95) 100%);">
-                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
-                        <div style="max-width: 680px;">
+                <!-- Project 3: Works Exploration Bento Banner (12 Columns) -->
+                <article class="bento-card-root span-12" style="background: linear-gradient(135deg, rgba(14, 23, 42, 0.92) 0%, rgba(10, 15, 26, 0.96) 100%);">
+                    <div class="banner-card-flex">
+                        <div class="banner-text-col">
                             <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
                                 <span class="spec-badge"><i data-feather="archive" style="width: 13px; height: 13px;"></i> COMPLETE ARCHIVE</span>
-                                <span style="color: var(--accent-color); font-weight: 600; font-size: 0.85rem;">CAD + Web + Python + Flutter</span>
+                                <span style="color: var(--cyan-accent); font-weight: 600; font-size: 0.85rem;">CAD + Web + Python + Flutter</span>
                             </div>
-                            <h3 style="margin-bottom: 0.5rem; font-size: 1.45rem;">Looking for all technical projects & source code?</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.65; margin: 0;">
+                            <h3 class="card-title-text" style="font-size: clamp(1.25rem, 2.2vw, 1.55rem); margin-bottom: 0.5rem;">
+                                Looking for all technical projects &amp; source code?
+                            </h3>
+                            <p style="color: var(--text-muted); line-height: 1.65; margin: 0; font-size: 0.95rem;">
                                 Discover the dedicated Works directory with category filtering across CAD models, web apps, Python scripts, and Flutter mobile prototypes.
                             </p>
                         </div>
-                        <a href="works.html" class="btn btn-primary" style="white-space: nowrap;">
+                        <a href="works.html" class="btn-core btn-primary-cyan" style="white-space: nowrap;">
                             Explore Full Works <i data-feather="arrow-right"></i>
                         </a>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="section container reveal">
-            <div class="card glass" style="text-align: center; max-width: 680px; margin: 0 auto; padding: 3.5rem 2rem; position: relative;">
-                <div class="blueprint-glow" style="top: -20px; left: 50%; transform: translateX(-50%); width: 200px; height: 120px; filter: blur(70px);"></div>
+        <section id="contact" class="site-section site-container reveal">
+            <div class="bento-card-root contact-box-wrap" style="padding: clamp(2.5rem, 5vw, 3.75rem) clamp(1.25rem, 3vw, 2.5rem);">
+                <div class="schematic-ambient-glow" style="top: -30px; left: 50%; transform: translateX(-50%); width: 220px; height: 140px; filter: blur(75px);"></div>
                 
-                <span class="spec-badge" style="margin-bottom: 1rem;"><i data-feather="send" style="width: 13px; height: 13px;"></i> GET IN TOUCH</span>
-                <h2 class="text-gradient" style="margin-bottom: 1rem;">Let's Connect</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 2.25rem; font-size: 1.1rem; line-height: 1.75;">
+                <div class="section-tag-label" style="justify-content: center; margin-bottom: 0.75rem;">
+                    <span class="spec-badge"><i data-feather="send" style="width: 13px; height: 13px;"></i> GET IN TOUCH</span>
+                </div>
+                <h2 class="section-title text-gradient" style="margin-bottom: 0.75rem;">Let's Connect</h2>
+                <p style="color: var(--text-muted); font-size: clamp(1rem, 1.6vw, 1.12rem); line-height: 1.75; max-width: 580px; margin: 0 auto;">
                     Interested in discussing engineering, CAD projects, or software side projects? Feel free to reach out.
                 </p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; align-items: center;">
-                    <a href="mailto:im00ll@proton.me" class="btn btn-primary"
-                        style="font-size: 1rem; padding: 0.85rem 2.25rem;">
+
+                <div class="contact-buttons-row">
+                    <a href="mailto:im00ll@proton.me" class="btn-core btn-primary-cyan">
                         Say Hello <i data-feather="mail"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/isam-mohammed-27762720a/" target="_blank" rel="noopener" class="btn btn-outline"
-                        style="font-size: 1rem; padding: 0.85rem 2.25rem;">
+                    <a href="https://www.linkedin.com/in/isam-mohammed-27762720a/" target="_blank" rel="noopener" class="btn-core btn-outline-glass">
                         <i data-feather="linkedin"></i> LinkedIn
                     </a>
                 </div>
@@ -459,19 +1416,44 @@
     </main>
 
     <!-- Footer -->
-    <footer class="container"
-        style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding: 2.25rem 1.5rem; margin-top: 0; background: transparent; flex-wrap: wrap; gap: 1.25rem;">
-        <span style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 Isam Mohammed. All rights reserved.</span>
-        <div style="display: flex; gap: 1.5rem; align-items: center;">
-            <a href="https://github.com/IM-LL" target="_blank" rel="noopener" style="color: var(--text-secondary);" aria-label="GitHub"><i data-feather="github"></i></a>
-            <a href="https://www.linkedin.com/in/isam-mohammed-27762720a/" target="_blank" rel="noopener" style="color: var(--text-secondary);" aria-label="LinkedIn"><i data-feather="linkedin"></i></a>
+    <footer class="site-footer">
+        <div class="site-container footer-flex">
+            <p class="footer-copy">&copy; 2026 Isam Mohammed. All rights reserved.</p>
+            <div class="footer-social-links">
+                <a href="https://github.com/IM-LL" target="_blank" rel="noopener" aria-label="GitHub"><i data-feather="github"></i></a>
+                <a href="https://www.linkedin.com/in/isam-mohammed-27762720a/" target="_blank" rel="noopener" aria-label="LinkedIn"><i data-feather="linkedin"></i></a>
+            </div>
         </div>
     </footer>
 
     <!-- Scripts -->
     <script src="script.js"></script>
     <script>
+        // Feather Icons Initialization
         feather.replace();
+
+        // Responsive Hamburger Menu Toggle
+        const menuBtn = document.getElementById('menu-toggle-btn');
+        const mainNav = document.getElementById('main-navigation');
+
+        if (menuBtn && mainNav) {
+            menuBtn.addEventListener('click', () => {
+                const isActive = mainNav.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+                const icon = isActive ? 'x' : 'menu';
+                menuBtn.querySelector('i').setAttribute('data-feather', icon);
+                feather.replace();
+            });
+
+            document.querySelectorAll('.desktop-nav .nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mainNav.classList.remove('active');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                    menuBtn.querySelector('i').setAttribute('data-feather', 'menu');
+                    feather.replace();
+                });
+            });
+        }
     </script>
 </body>
 
