@@ -33,17 +33,14 @@
 
     <!-- Embedded Pure CSS Production Layout & Crimson Glassmorphism Engine -->
     <style>
-        /* ==========================================================================
-           ROOT DESIGN TOKENS & COLOR SYSTEM (CRIMSON RED)
-           ========================================================================== */
         :root {
             --bg-primary: #0a0c10;
             --surface-card: rgba(17, 24, 39, 0.75);
             --surface-elevated: rgba(22, 30, 48, 0.88);
             --surface-border: rgba(244, 63, 94, 0.16);
             --surface-border-hover: rgba(244, 63, 94, 0.45);
-            --accent-crimson: #f43f5e;       /* Deep Crimson Red Primary */
-            --accent-hover: #fb7185;         /* Rose 400 Hover */
+            --accent-crimson: #f43f5e;
+            --accent-hover: #fb7185;
             --accent-glow: rgba(244, 63, 94, 0.22);
             --accent-subtle: rgba(244, 63, 94, 0.08);
             --text-main: #f8fafc;
@@ -61,7 +58,7 @@
             --surface-elevated: rgba(241, 245, 249, 0.95);
             --surface-border: rgba(225, 29, 72, 0.18);
             --surface-border-hover: rgba(225, 29, 72, 0.45);
-            --accent-crimson: #e11d48;       /* Crimson Light Mode Accent */
+            --accent-crimson: #e11d48;
             --accent-hover: #be123c;
             --accent-glow: rgba(225, 29, 72, 0.16);
             --accent-subtle: rgba(225, 29, 72, 0.06);
@@ -69,7 +66,6 @@
             --text-muted: #475569;
         }
 
-        /* Box-Sizing & Layout Isolation */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -99,7 +95,6 @@
             background-attachment: fixed;
         }
 
-        /* Living Canvas Behind Content */
         #live-bg-canvas {
             position: fixed;
             top: 0;
@@ -115,7 +110,6 @@
             z-index: 1;
         }
 
-        /* Container & Section Flow Controls */
         .site-container {
             width: 100%;
             max-width: var(--max-w);
@@ -131,9 +125,6 @@
             position: relative;
         }
 
-        /* ==========================================================================
-           HEADER & NAVIGATION (IN-FLOW THEME SWITCH & NO CLIPPING)
-           ========================================================================== */
         header.glass-nav {
             position: fixed;
             top: 0;
@@ -238,7 +229,6 @@
             flex-shrink: 0;
         }
 
-        /* In-Flow Theme Switch (Prevents Floating Overlap) */
         .theme-switch-inline {
             position: relative !important;
             display: inline-flex;
@@ -345,9 +335,6 @@
             background: var(--accent-subtle);
         }
 
-        /* ==========================================================================
-           HERO SECTION
-           ========================================================================== */
         #hero {
             min-height: calc(100svh - var(--header-h));
             display: flex;
@@ -361,7 +348,6 @@
             width: 100%;
         }
 
-        /* Live Status Pill */
         .live-status-pill {
             display: inline-flex;
             align-items: center;
@@ -424,7 +410,6 @@
             }
         }
 
-        /* Typography Scales */
         .hero-title {
             font-family: var(--font-head);
             font-weight: 800;
@@ -459,7 +444,6 @@
             line-height: 1.75;
         }
 
-        /* Hero Action Buttons */
         .hero-cta-group {
             display: flex;
             gap: 0.85rem;
@@ -514,7 +498,6 @@
             transform: translateY(-2px);
         }
 
-        /* Spec Badges Strip */
         .hero-specs-strip {
             display: flex;
             gap: 0.65rem;
@@ -544,9 +527,6 @@
             color: #e11d48;
         }
 
-        /* ==========================================================================
-           SECTION HEADERS (STANDARDIZED VERTICAL RHYTHM)
-           ========================================================================== */
         .section-header-block {
             margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
         }
@@ -574,9 +554,6 @@
             line-height: 1.65;
         }
 
-        /* ==========================================================================
-           BENTO GRID SYSTEM (DESKTOP / TABLET / MOBILE ALIGNED)
-           ========================================================================== */
         .bento-grid-12 {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -660,7 +637,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Technical Info Key-Value Table */
         .tech-spec-table {
             display: flex;
             flex-direction: column;
@@ -710,7 +686,6 @@
             color: var(--accent-hover);
         }
 
-        /* Technology Pill Tags */
         .tech-tags-wrap {
             display: flex;
             gap: 0.45rem;
@@ -734,7 +709,6 @@
             color: var(--text-main);
         }
 
-        /* Blueprint Schematic Preview Container */
         .blueprint-schematic-box {
             background: linear-gradient(135deg, rgba(14, 23, 42, 0.9) 0%, rgba(10, 15, 26, 0.95) 100%);
             border-radius: 12px;
@@ -764,7 +738,6 @@
             pointer-events: none;
         }
 
-        /* Card Action Row */
         .card-action-footer {
             display: flex;
             align-items: center;
@@ -799,7 +772,6 @@
             box-shadow: 0 0 12px var(--accent-glow);
         }
 
-        /* Banner Card Specific Spacing */
         .banner-card-flex {
             display: flex;
             justify-content: space-between;
@@ -813,9 +785,6 @@
             flex: 1 1 320px;
         }
 
-        /* ==========================================================================
-           CONTACT & FOOTER
-           ========================================================================== */
         .contact-box-wrap {
             max-width: 680px;
             margin-left: auto;
@@ -869,9 +838,6 @@
             color: var(--accent-crimson);
         }
 
-        /* ==========================================================================
-           RESPONSIVE AUDIT BREAKPOINTS (<992px & <768px & <480px)
-           ========================================================================== */
         @media (max-width: 992px) {
             .span-7,
             .span-6,
@@ -1213,7 +1179,6 @@
                     </div>
 
                     <div>
-                        <!-- Dimension Indicator Box -->
                         <div style="background: rgba(10, 15, 26, 0.6); padding: 0.75rem 0.95rem; border-radius: 8px; border: 1px solid var(--surface-border); margin-bottom: 1.25rem; font-family: var(--font-code); font-size: 0.78rem; color: #fb7185; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
                             <span>DIM: 2D/3D ORTHOGRAPHIC</span>
                             <span>TOL: ACCURATE</span>
@@ -1338,7 +1303,6 @@
                 <!-- Project 1: AutoCAD Mechanical Drafts (Featured - 7 Columns) -->
                 <article class="bento-card-root span-7">
                     <div>
-                        <!-- Schematic Graphic Box -->
                         <div class="blueprint-schematic-box">
                             <div class="schematic-ambient-glow" style="top: 20%; left: 30%;"></div>
                             <div style="display: flex; flex-direction: column; align-items: center; gap: 0.65rem; z-index: 1;">
@@ -1372,7 +1336,6 @@
                 <!-- Project 2: Personal Portfolio Website (5 Columns) -->
                 <article class="bento-card-root span-5">
                     <div>
-                        <!-- Schematic Graphic Box -->
                         <div class="blueprint-schematic-box">
                             <div class="schematic-ambient-glow" style="bottom: 20%; right: 25%; background: #e11d48;"></div>
                             <div style="display: flex; flex-direction: column; align-items: center; gap: 0.65rem; z-index: 1;">
@@ -1465,7 +1428,6 @@
     <!-- Scripts -->
     <script src="script.js"></script>
     <script>
-        // Feather Icons Initialization
         feather.replace();
     </script>
 </body>
