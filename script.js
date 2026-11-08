@@ -1,37 +1,56 @@
 // ==========================================================================
-// 1. THEME MANAGEMENT & PERSISTENCE
+// 1. THEME SYNCHRONIZATION & PERSISTENCE (ZERO-FLASH SYNC)
 // ==========================================================================
-const htmlElement = document.documentElement;
+(function initThemeEngine() {
+    const root = document.documentElement;
+    const STORAGE_KEY = 'theme';
 
-const getSavedTheme = () => {
-    const saved = localStorage.getItem('theme');
-    if (saved) return saved;
-    return 'dark';
-};
+    const getSystemTheme = () => {
+        return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    };
 
-const applyTheme = (theme) => {
-    htmlElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    const getSavedTheme = () => {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved === 'light' || saved === 'dark') return saved;
+        return root.getAttribute('data-theme') || getSystemTheme() || 'dark';
+    };
 
-    // Sync all toggle checkboxes on page
-    document.querySelectorAll('#theme-toggle').forEach(toggle => {
-        toggle.checked = (theme === 'dark');
-    });
-};
+    const syncThemeUI = (theme, persist = false) => {
+        root.setAttribute('data-theme', theme);
+        if (persist) {
+            localStorage.setItem(STORAGE_KEY, theme);
+        }
 
-// Initial Theme Sync
-const currentTheme = getSavedTheme();
-applyTheme(currentTheme);
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('#theme-toggle').forEach(toggle => {
-        toggle.checked = (htmlElement.getAttribute('data-theme') === 'dark');
-        toggle.addEventListener('change', (e) => {
-            const newTheme = e.target.checked ? 'dark' : 'light';
-            applyTheme(newTheme);
+        const isDark = theme === 'dark';
+        const toggles = document.querySelectorAll('input#theme-toggle');
+        toggles.forEach(toggle => {
+            if (toggle.checked !== isDark) {
+                toggle.checked = isDark;
+            }
         });
+    };
+
+    // Execute instant sync
+    const initialTheme = getSavedTheme();
+    syncThemeUI(initialTheme);
+
+    // Instant delegation for checkbox change
+    document.addEventListener('change', (e) => {
+        if (e.target && e.target.matches('input#theme-toggle')) {
+            const nextTheme = e.target.checked ? 'dark' : 'light';
+            syncThemeUI(nextTheme, true);
+        }
     });
-});
+
+    // Ensure checkbox DOM state aligns on interactive ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            syncThemeUI(root.getAttribute('data-theme') || initialTheme);
+        });
+    } else {
+        syncThemeUI(root.getAttribute('data-theme') || initialTheme);
+    }
+})();
 
 // ==========================================================================
 // 2. LIVING BACKGROUND CANVAS (Max 50 Connected Nodes, Zero Lag)
@@ -54,12 +73,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let animationFrameId = null;
     let isPaused = false;
 
-    // Constrain to maximum 45-50 nodes based on viewport
+    // Mobile Canvas Optimization: Cap particle count to <= 22 nodes on mobile viewports
     const calculateMaxNodes = () => {
-        const screenArea = window.innerWidth * window.innerHeight;
-        if (window.innerWidth <= 768 || screenArea < 400000) return 22;      // Mobile
-        if (screenArea < 900000) return 36;      // Tablet / Small Laptop
-        return 48;                               // Desktop (capped at 48 < 50)
+        if (window.innerWidth <= 768) {
+            return Math.min(22, Math.max(14, Math.floor(window.innerWidth / 18)));
+        }
+        if (window.innerWidth <= 1024) {
+            return 35;
+        }
+        return 48;
     };
 
     let maxNodes = calculateMaxNodes();
@@ -146,7 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
         animationFrameId = requestAnimationFrame(renderCanvas);
     }
 
-    // Debounced Resize Observer
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
@@ -158,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 150);
     }, { passive: true });
 
-    // Auto-throttle and pause when tab is inactive to guarantee zero CPU waste
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
             isPaused = true;
@@ -191,7 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close menu on link click
         navMenu.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
