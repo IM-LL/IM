@@ -14,24 +14,32 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- CSS Links & Production Layout Engine -->
+    <!-- CSS Links -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Embedded Pure CSS Production Layout & Spacing Engine -->
+    <!-- Anti-FOUC Theme Initializer -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+
+    <!-- Embedded Pure CSS Production Layout & Crimson Glassmorphism Engine -->
     <style>
         /* ==========================================================================
-           ROOT DESIGN TOKENS & RESET
+           ROOT DESIGN TOKENS & COLOR SYSTEM (CRIMSON RED)
            ========================================================================== */
         :root {
             --bg-primary: #0a0c10;
-            --surface-card: rgba(17, 24, 39, 0.72);
-            --surface-elevated: rgba(22, 30, 48, 0.85);
-            --surface-border: rgba(56, 189, 248, 0.16);
-            --surface-border-hover: rgba(56, 189, 248, 0.45);
-            --cyan-accent: #38bdf8;
-            --cyan-hover: #7dd3fc;
-            --cyan-glow: rgba(56, 189, 248, 0.22);
-            --cyan-subtle: rgba(56, 189, 248, 0.08);
+            --surface-card: rgba(17, 24, 39, 0.75);
+            --surface-elevated: rgba(22, 30, 48, 0.88);
+            --surface-border: rgba(244, 63, 94, 0.16);
+            --surface-border-hover: rgba(244, 63, 94, 0.45);
+            --accent-crimson: #f43f5e;       /* Deep Crimson Red Primary */
+            --accent-hover: #fb7185;         /* Rose 400 Hover */
+            --accent-glow: rgba(244, 63, 94, 0.22);
+            --accent-subtle: rgba(244, 63, 94, 0.08);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --font-head: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -45,12 +53,12 @@
             --bg-primary: #f8fafc;
             --surface-card: rgba(255, 255, 255, 0.85);
             --surface-elevated: rgba(241, 245, 249, 0.95);
-            --surface-border: rgba(2, 132, 199, 0.18);
-            --surface-border-hover: rgba(2, 132, 199, 0.45);
-            --cyan-accent: #0284c7;
-            --cyan-hover: #0369a1;
-            --cyan-glow: rgba(2, 132, 199, 0.16);
-            --cyan-subtle: rgba(2, 132, 199, 0.06);
+            --surface-border: rgba(225, 29, 72, 0.18);
+            --surface-border-hover: rgba(225, 29, 72, 0.45);
+            --accent-crimson: #e11d48;       /* Crimson Light Mode Accent */
+            --accent-hover: #be123c;
+            --accent-glow: rgba(225, 29, 72, 0.16);
+            --accent-subtle: rgba(225, 29, 72, 0.06);
             --text-main: #0f172a;
             --text-muted: #475569;
         }
@@ -77,12 +85,28 @@
             overflow-x: hidden;
             background-color: var(--bg-primary);
             background-image: 
-                linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
-                radial-gradient(circle 800px at 50% -10%, rgba(56, 189, 248, 0.12), transparent 70%);
+                linear-gradient(rgba(244, 63, 94, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(244, 63, 94, 0.04) 1px, transparent 1px),
+                radial-gradient(circle 800px at 50% -10%, rgba(244, 63, 94, 0.12), transparent 70%);
             background-size: 36px 36px, 36px 36px, 100% 100%;
             background-position: -1px -1px, -1px -1px, 0 0;
             background-attachment: fixed;
+        }
+
+        /* Living Canvas Behind Content */
+        #live-bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header, main, footer {
+            position: relative;
+            z-index: 1;
         }
 
         /* Container & Section Flow Controls */
@@ -102,7 +126,7 @@
         }
 
         /* ==========================================================================
-           HEADER & NAVIGATION (NO POSITION CONFLICTS)
+           HEADER & NAVIGATION (IN-FLOW THEME SWITCH & NO CLIPPING)
            ========================================================================== */
         header.glass-nav {
             position: fixed;
@@ -112,7 +136,7 @@
             width: 100%;
             height: var(--header-h);
             z-index: 1000;
-            background: rgba(10, 12, 16, 0.78);
+            background: rgba(10, 12, 16, 0.82);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--surface-border);
@@ -121,7 +145,7 @@
         }
 
         [data-theme="light"] header.glass-nav {
-            background: rgba(255, 255, 255, 0.82);
+            background: rgba(255, 255, 255, 0.85);
         }
 
         .nav-wrapper {
@@ -178,7 +202,7 @@
 
         .nav-links-list a:hover,
         .nav-links-list a.active {
-            color: var(--cyan-accent);
+            color: var(--accent-crimson);
         }
 
         .nav-links-list a::after {
@@ -188,13 +212,15 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: var(--cyan-accent);
+            background: var(--accent-crimson);
             transform: scaleX(0);
             transform-origin: right;
             transition: transform 0.25s ease;
+            box-shadow: 0 0 8px var(--accent-glow);
         }
 
-        .nav-links-list a:hover::after {
+        .nav-links-list a:hover::after,
+        .nav-links-list a.active::after {
             transform: scaleX(1);
             transform-origin: left;
         }
@@ -208,21 +234,21 @@
 
         /* In-Flow Theme Switch (Prevents Floating Overlap) */
         .theme-switch-inline {
-            position: static !important;
-            display: flex;
+            position: relative !important;
+            display: inline-flex;
             align-items: center;
-            background: var(--cyan-subtle);
+            background: var(--accent-subtle);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             padding: 3px;
             border-radius: 100px;
             border: 1px solid var(--surface-border);
-            box-shadow: none;
-            transition: border-color 0.2s ease;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .theme-switch-inline:hover {
-            border-color: var(--cyan-accent);
+            border-color: var(--accent-crimson);
+            box-shadow: 0 0 12px var(--accent-glow);
         }
 
         .theme-switch-control {
@@ -255,7 +281,7 @@
         }
 
         .switch-rail::before {
-            background-color: var(--cyan-accent);
+            background-color: var(--accent-crimson);
             bottom: 3px;
             content: "";
             height: 22px;
@@ -265,7 +291,7 @@
             width: 22px;
             border-radius: 50%;
             z-index: 2;
-            box-shadow: 0 0 8px var(--cyan-glow);
+            box-shadow: 0 0 8px var(--accent-glow);
         }
 
         input:checked + .switch-rail::before {
@@ -307,7 +333,7 @@
 
         .mobile-hamburger:hover {
             border-color: var(--surface-border);
-            background: var(--cyan-subtle);
+            background: var(--accent-subtle);
         }
 
         /* ==========================================================================
@@ -333,23 +359,23 @@
             gap: 0.65rem;
             padding: 0.4rem 1rem;
             border-radius: 9999px;
-            background: var(--cyan-subtle);
-            border: 1px solid rgba(56, 189, 248, 0.32);
+            background: var(--accent-subtle);
+            border: 1px solid rgba(244, 63, 94, 0.32);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             font-size: clamp(0.78rem, 1.5vw, 0.85rem);
             font-weight: 600;
             letter-spacing: 0.025em;
-            color: var(--cyan-accent);
-            box-shadow: 0 0 16px var(--cyan-glow);
+            color: var(--accent-crimson);
+            box-shadow: 0 0 16px var(--accent-glow);
             margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
             max-width: 100%;
             transition: all 0.25s ease;
         }
 
         .live-status-pill:hover {
-            border-color: var(--cyan-accent);
-            box-shadow: 0 0 22px var(--cyan-glow);
+            border-color: var(--accent-crimson);
+            box-shadow: 0 0 24px var(--accent-glow);
             transform: translateY(-1px);
         }
 
@@ -368,7 +394,7 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background-color: var(--cyan-accent);
+            background-color: var(--accent-crimson);
             opacity: 0.75;
             animation: radarPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
         }
@@ -378,8 +404,8 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background-color: var(--cyan-accent);
-            box-shadow: 0 0 8px var(--cyan-accent);
+            background-color: var(--accent-crimson);
+            box-shadow: 0 0 8px var(--accent-crimson);
         }
 
         @keyframes radarPing {
@@ -402,7 +428,7 @@
         }
 
         .text-gradient {
-            background: linear-gradient(135deg, #ffffff 25%, #38bdf8 100%);
+            background: linear-gradient(135deg, #ffffff 25%, #f43f5e 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -410,7 +436,7 @@
         }
 
         [data-theme="light"] .text-gradient {
-            background: linear-gradient(135deg, #0f172a 35%, #0284c7 100%);
+            background: linear-gradient(135deg, #0f172a 35%, #e11d48 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -449,22 +475,22 @@
             white-space: nowrap;
         }
 
-        .btn-primary-cyan {
-            background: var(--cyan-accent);
+        .btn-primary-crimson {
+            background: var(--accent-crimson);
             color: #0a0c10 !important;
-            border: 1px solid var(--cyan-accent);
-            box-shadow: 0 0 20px var(--cyan-glow);
+            border: 1px solid var(--accent-crimson);
+            box-shadow: 0 0 20px var(--accent-glow);
         }
 
-        .btn-primary-cyan:hover {
-            background: var(--cyan-hover);
-            border-color: var(--cyan-hover);
-            box-shadow: 0 0 28px rgba(56, 189, 248, 0.5);
+        .btn-primary-crimson:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+            box-shadow: 0 0 28px rgba(244, 63, 94, 0.5);
             transform: translateY(-2px);
         }
 
         .btn-outline-glass {
-            background: var(--cyan-subtle);
+            background: var(--accent-subtle);
             border: 1px solid var(--surface-border);
             color: var(--text-main);
             backdrop-filter: blur(10px);
@@ -472,10 +498,10 @@
         }
 
         .btn-outline-glass:hover {
-            border-color: var(--cyan-accent);
-            color: var(--cyan-accent);
-            background: rgba(56, 189, 248, 0.12);
-            box-shadow: 0 0 16px var(--cyan-glow);
+            border-color: var(--accent-crimson);
+            color: var(--accent-crimson);
+            background: rgba(244, 63, 94, 0.12);
+            box-shadow: 0 0 16px var(--accent-glow);
             transform: translateY(-2px);
         }
 
@@ -491,9 +517,9 @@
         }
 
         .spec-badge {
-            background: var(--cyan-subtle);
+            background: var(--accent-subtle);
             border: 1px solid var(--surface-border);
-            color: #7dd3fc;
+            color: #fb7185;
             font-size: clamp(0.72rem, 1.2vw, 0.78rem);
             font-family: var(--font-code);
             padding: 0.3rem 0.75rem;
@@ -506,7 +532,7 @@
         }
 
         [data-theme="light"] .spec-badge {
-            color: #0369a1;
+            color: #e11d48;
         }
 
         /* ==========================================================================
@@ -563,22 +589,20 @@
                         border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
                         box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.5);
-            min-width: 0; /* Prevents flex/grid clipping */
+            min-width: 0;
         }
 
         .bento-card-root:hover {
             border-color: var(--surface-border-hover);
             transform: translateY(-5px);
-            box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.7), 0 0 24px var(--cyan-glow);
+            box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.7), 0 0 24px var(--accent-glow);
         }
 
-        /* Grid Spans */
         .span-12 { grid-column: span 12; }
         .span-7  { grid-column: span 7; }
         .span-6  { grid-column: span 6; }
         .span-5  { grid-column: span 5; }
 
-        /* Card Content Layout Utilities */
         .card-top-header {
             display: flex;
             justify-content: space-between;
@@ -595,14 +619,14 @@
         }
 
         .card-icon-avatar {
-            background: var(--cyan-subtle);
+            background: var(--accent-subtle);
             padding: 0.65rem;
             border-radius: 10px;
             border: 1px solid var(--surface-border);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--cyan-accent);
+            color: var(--accent-crimson);
             flex-shrink: 0;
         }
 
@@ -666,7 +690,7 @@
         }
 
         .spec-val a {
-            color: var(--cyan-accent);
+            color: var(--accent-crimson);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -674,7 +698,7 @@
         }
 
         .spec-val a:hover {
-            color: var(--cyan-hover);
+            color: var(--accent-hover);
         }
 
         /* Technology Pill Tags */
@@ -686,7 +710,7 @@
         }
 
         .tech-tag-pill {
-            background: var(--cyan-subtle);
+            background: var(--accent-subtle);
             border: 1px solid var(--surface-border);
             color: var(--text-muted);
             padding: 0.25rem 0.65rem;
@@ -697,7 +721,7 @@
         }
 
         .bento-card-root:hover .tech-tag-pill {
-            border-color: rgba(56, 189, 248, 0.28);
+            border-color: rgba(244, 63, 94, 0.3);
             color: var(--text-main);
         }
 
@@ -714,8 +738,8 @@
             height: clamp(160px, 22vw, 200px);
             margin-bottom: 1.35rem;
             background-image: 
-                linear-gradient(rgba(56, 189, 248, 0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+                linear-gradient(rgba(244, 63, 94, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(244, 63, 94, 0.05) 1px, transparent 1px);
             background-size: 20px 20px;
             background-position: -1px -1px;
         }
@@ -725,7 +749,7 @@
             width: 140px;
             height: 140px;
             border-radius: 50%;
-            background: var(--cyan-accent);
+            background: var(--accent-crimson);
             filter: blur(55px);
             opacity: 0.25;
             pointer-events: none;
@@ -753,17 +777,17 @@
             padding: 0.45rem 1rem;
             border-radius: 8px;
             border: 1px solid var(--surface-border);
-            background: var(--cyan-subtle);
+            background: var(--accent-subtle);
             color: var(--text-main);
             transition: all 0.2s ease;
             white-space: nowrap;
         }
 
         .action-link-btn:hover {
-            border-color: var(--cyan-accent);
-            color: var(--cyan-accent);
-            background: rgba(56, 189, 248, 0.15);
-            box-shadow: 0 0 12px var(--cyan-glow);
+            border-color: var(--accent-crimson);
+            color: var(--accent-crimson);
+            background: rgba(244, 63, 94, 0.15);
+            box-shadow: 0 0 12px var(--accent-glow);
         }
 
         /* Banner Card Specific Spacing */
@@ -833,7 +857,7 @@
         }
 
         .footer-social-links a:hover {
-            color: var(--cyan-accent);
+            color: var(--accent-crimson);
         }
 
         /* ==========================================================================
@@ -968,12 +992,15 @@
 
 <body>
 
+    <!-- Living Background Canvas (Max 50 Nodes, Zero Lag) -->
+    <canvas id="live-bg-canvas"></canvas>
+
     <!-- Navigation Header -->
     <header class="glass-nav">
         <div class="site-container nav-wrapper">
             <a href="#hero" class="brand-logo" aria-label="Isam Mohammed Portfolio">
                 <img src="favicon.svg" alt="IM Logo" width="34" height="34">
-                <span>Isam<span style="color: var(--cyan-accent);">.</span></span>
+                <span>Isam<span style="color: var(--accent-crimson);">.</span></span>
             </a>
 
             <!-- Primary Navigation Links -->
@@ -1032,7 +1059,7 @@
 
                 <!-- Hero Action Buttons -->
                 <div class="hero-cta-group reveal delay-300">
-                    <a href="works.html" class="btn-core btn-primary-cyan">
+                    <a href="works.html" class="btn-core btn-primary-crimson">
                         View Side Projects <i data-feather="arrow-right"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/isam-mohammed-27762720a/" target="_blank" rel="noopener" class="btn-core btn-outline-glass">
@@ -1114,7 +1141,7 @@
 
                             <div class="spec-table-row">
                                 <span class="spec-key">CAD Proficiency</span>
-                                <span class="spec-val" style="color: var(--cyan-accent);">AutoCAD (Fully Fledged)</span>
+                                <span class="spec-val" style="color: var(--accent-crimson);">AutoCAD (Fully Fledged)</span>
                             </div>
 
                             <div class="spec-table-row">
@@ -1133,9 +1160,9 @@
                         </div>
                     </div>
 
-                    <div style="margin-top: 1.5rem; background: var(--cyan-subtle); padding: 0.85rem 1rem; border-radius: 10px; border: 1px solid var(--surface-border);">
+                    <div style="margin-top: 1.5rem; background: var(--accent-subtle); padding: 0.85rem 1rem; border-radius: 10px; border: 1px solid var(--surface-border);">
                         <p style="font-size: 0.84rem; color: var(--text-muted); margin: 0; line-height: 1.55;">
-                            <strong style="color: var(--cyan-accent);">Current Focus:</strong> Integrating computational methods &amp; CAD precision with practical engineering workflows.
+                            <strong style="color: var(--accent-crimson);">Current Focus:</strong> Integrating computational methods &amp; CAD precision with practical engineering workflows.
                         </p>
                     </div>
                 </article>
@@ -1165,7 +1192,7 @@
                                 </div>
                                 <div>
                                     <h3 class="card-title-text">CAD &amp; Mechanical</h3>
-                                    <p class="card-sub-label" style="color: var(--cyan-accent); font-weight: 500;">Core Discipline &amp; Drafting</p>
+                                    <p class="card-sub-label" style="color: var(--accent-crimson); font-weight: 500;">Core Discipline &amp; Drafting</p>
                                 </div>
                             </div>
                             <span class="spec-badge">FLAGSHIP</span>
@@ -1178,7 +1205,7 @@
 
                     <div>
                         <!-- Dimension Indicator Box -->
-                        <div style="background: rgba(10, 15, 26, 0.6); padding: 0.75rem 0.95rem; border-radius: 8px; border: 1px solid var(--surface-border); margin-bottom: 1.25rem; font-family: var(--font-code); font-size: 0.78rem; color: #7dd3fc; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+                        <div style="background: rgba(10, 15, 26, 0.6); padding: 0.75rem 0.95rem; border-radius: 8px; border: 1px solid var(--surface-border); margin-bottom: 1.25rem; font-family: var(--font-code); font-size: 0.78rem; color: #fb7185; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
                             <span>DIM: 2D/3D ORTHOGRAPHIC</span>
                             <span>TOL: ACCURATE</span>
                             <span>CAD: DWG/DXF</span>
@@ -1306,7 +1333,7 @@
                         <div class="blueprint-schematic-box">
                             <div class="schematic-ambient-glow" style="top: 20%; left: 30%;"></div>
                             <div style="display: flex; flex-direction: column; align-items: center; gap: 0.65rem; z-index: 1;">
-                                <i data-feather="compass" style="width: 44px; height: 44px; color: var(--cyan-accent);"></i>
+                                <i data-feather="compass" style="width: 44px; height: 44px; color: var(--accent-crimson);"></i>
                                 <span class="spec-badge" style="background: rgba(10, 12, 16, 0.88);">DWG // MECHANICAL SCHEMATIC</span>
                             </div>
                         </div>
@@ -1338,9 +1365,9 @@
                     <div>
                         <!-- Schematic Graphic Box -->
                         <div class="blueprint-schematic-box">
-                            <div class="schematic-ambient-glow" style="bottom: 20%; right: 25%; background: #0ea5e9;"></div>
+                            <div class="schematic-ambient-glow" style="bottom: 20%; right: 25%; background: #e11d48;"></div>
                             <div style="display: flex; flex-direction: column; align-items: center; gap: 0.65rem; z-index: 1;">
-                                <i data-feather="globe" style="width: 44px; height: 44px; color: var(--cyan-accent);"></i>
+                                <i data-feather="globe" style="width: 44px; height: 44px; color: var(--accent-crimson);"></i>
                                 <span class="spec-badge" style="background: rgba(10, 12, 16, 0.88);">WEB // GLASSMORPHISM</span>
                             </div>
                         </div>
@@ -1373,7 +1400,7 @@
                         <div class="banner-text-col">
                             <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
                                 <span class="spec-badge"><i data-feather="archive" style="width: 13px; height: 13px;"></i> COMPLETE ARCHIVE</span>
-                                <span style="color: var(--cyan-accent); font-weight: 600; font-size: 0.85rem;">CAD + Web + Python + Flutter</span>
+                                <span style="color: var(--accent-crimson); font-weight: 600; font-size: 0.85rem;">CAD + Web + Python + Flutter</span>
                             </div>
                             <h3 class="card-title-text" style="font-size: clamp(1.25rem, 2.2vw, 1.55rem); margin-bottom: 0.5rem;">
                                 Looking for all technical projects &amp; source code?
@@ -1382,7 +1409,7 @@
                                 Discover the dedicated Works directory with category filtering across CAD models, web apps, Python scripts, and Flutter mobile prototypes.
                             </p>
                         </div>
-                        <a href="works.html" class="btn-core btn-primary-cyan" style="white-space: nowrap;">
+                        <a href="works.html" class="btn-core btn-primary-crimson" style="white-space: nowrap;">
                             Explore Full Works <i data-feather="arrow-right"></i>
                         </a>
                     </div>
@@ -1404,7 +1431,7 @@
                 </p>
 
                 <div class="contact-buttons-row">
-                    <a href="mailto:im00ll@proton.me" class="btn-core btn-primary-cyan">
+                    <a href="mailto:im00ll@proton.me" class="btn-core btn-primary-crimson">
                         Say Hello <i data-feather="mail"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/isam-mohammed-27762720a/" target="_blank" rel="noopener" class="btn-core btn-outline-glass">
@@ -1431,29 +1458,6 @@
     <script>
         // Feather Icons Initialization
         feather.replace();
-
-        // Responsive Hamburger Menu Toggle
-        const menuBtn = document.getElementById('menu-toggle-btn');
-        const mainNav = document.getElementById('main-navigation');
-
-        if (menuBtn && mainNav) {
-            menuBtn.addEventListener('click', () => {
-                const isActive = mainNav.classList.toggle('active');
-                menuBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
-                const icon = isActive ? 'x' : 'menu';
-                menuBtn.querySelector('i').setAttribute('data-feather', icon);
-                feather.replace();
-            });
-
-            document.querySelectorAll('.desktop-nav .nav-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    mainNav.classList.remove('active');
-                    menuBtn.setAttribute('aria-expanded', 'false');
-                    menuBtn.querySelector('i').setAttribute('data-feather', 'menu');
-                    feather.replace();
-                });
-            });
-        }
     </script>
 </body>
 
