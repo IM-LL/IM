@@ -256,7 +256,7 @@ img {
     box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.7), 0 0 24px var(--accent-glow);
 }
 
-/* Header */
+/* Header & Navigation Alignment Fixes */
 header {
     position: fixed;
     top: 0;
@@ -270,6 +270,26 @@ header {
     background: var(--glass-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.nav-links-list {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
 }
 
 .nav-link {
@@ -303,6 +323,44 @@ header {
 .nav-link.active::after {
     transform: scaleX(1);
     transform-origin: left;
+}
+
+/* Header Actions & Toggle Spacing Fix (No Far-Right Crowding) */
+.header-actions-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 1.5rem;
+    flex-shrink: 0;
+}
+
+.theme-switch-wrapper,
+.theme-switch-inline {
+    position: relative !important;
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent-subtle);
+    padding: 3px;
+    border-radius: 100px;
+    border: 1px solid var(--border-color);
+    transition: var(--transition-smooth);
+}
+
+.theme-switch-wrapper:hover,
+.theme-switch-inline:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 30px;
+    position: relative;
+    width: 54px;
+}
+
+.theme-switch input {
+    display: none;
 }
 
 /* Hero Section */
@@ -481,38 +539,12 @@ footer {
     background: transparent;
 }
 
-/* In-Flow Theme Switch (No Fixed Position Drift) */
-.theme-switch-wrapper {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    background: var(--accent-subtle);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 3px;
-    border-radius: 100px;
-    border: 1px solid var(--border-color);
-    transition: var(--transition-smooth);
-}
-
-.theme-switch-wrapper:hover {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 12px var(--accent-glow);
-}
-
-.theme-switch {
-    display: inline-block;
-    height: 30px;
-    position: relative;
-    width: 54px;
-}
-
-.theme-switch input {
-    display: none;
-}
-
+/* ==========================================================================
+   CORRECTED THEME TOGGLE STATE & ICON MAPPING FIX
+   ========================================================================== */
+.switch-rail,
 .slider {
-    background-color: var(--surface-color-light);
+    background-color: var(--surface-color-light) !important;
     bottom: 0;
     cursor: pointer;
     left: 0;
@@ -522,46 +554,87 @@ footer {
     transition: 0.3s;
     border-radius: 30px;
     border: 1px solid var(--border-color);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 5px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 5px !important;
     overflow: hidden;
+    width: 54px !important;
+    height: 30px !important;
 }
 
-.slider:before {
-    background-color: var(--accent-color);
-    bottom: 3px;
-    content: "";
-    height: 22px;
-    left: 3px;
-    position: absolute;
-    transition: 0.3s;
-    width: 22px;
-    border-radius: 50%;
-    z-index: 2;
-    box-shadow: 0 0 8px var(--accent-glow);
-}
-
-input:checked+.slider:before {
-    transform: translateX(24px);
-}
-
-.sun-icon,
+/* Left: Moon icon */
+.switch-icon-moon,
 .moon-icon {
-    width: 14px;
-    height: 14px;
-    z-index: 1;
-    color: var(--text-secondary);
-    transition: var(--transition-fast);
+    order: 1 !important;
+    width: 14px !important;
+    height: 14px !important;
+    z-index: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: color 0.2s ease !important;
 }
 
-input:checked+.slider .moon-icon {
-    color: var(--text-primary);
+/* Right: Sun icon */
+.switch-icon-sun,
+.sun-icon {
+    order: 2 !important;
+    width: 14px !important;
+    height: 14px !important;
+    z-index: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: color 0.2s ease !important;
 }
 
-input:not(:checked)+.slider .sun-icon {
-    color: var(--text-primary);
+/* Knob Element */
+.switch-rail::before,
+.slider::before {
+    background-color: var(--accent-color) !important;
+    bottom: 3px !important;
+    content: "" !important;
+    height: 22px !important;
+    left: 3px !important;
+    position: absolute !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    width: 22px !important;
+    border-radius: 50% !important;
+    z-index: 2 !important;
+    box-shadow: 0 0 8px var(--accent-glow) !important;
+}
+
+/* Unchecked = Dark Mode (Knob stays on left over the Moon) */
+.switch-rail::before,
+.slider::before {
+    transform: translateX(0) !important;
+}
+
+input:not(:checked) + .switch-rail .switch-icon-moon,
+input:not(:checked) + .slider .moon-icon {
+    color: var(--text-primary) !important;
+}
+
+input:not(:checked) + .switch-rail .switch-icon-sun,
+input:not(:checked) + .slider .sun-icon {
+    color: var(--text-secondary) !important;
+}
+
+/* Checked = Light Mode (Knob slides right over the Sun) */
+input:checked + .switch-rail::before,
+input:checked + .slider::before {
+    transform: translateX(24px) !important;
+}
+
+input:checked + .switch-rail .switch-icon-sun,
+input:checked + .slider .sun-icon {
+    color: var(--text-primary) !important;
+}
+
+input:checked + .switch-rail .switch-icon-moon,
+input:checked + .slider .moon-icon {
+    color: var(--text-secondary) !important;
 }
 
 .mobile-menu-btn {
@@ -928,66 +1001,4 @@ html[data-theme="light"] body {
 :root[data-theme="light"] .spec-key,
 :root[data-theme="light"] .footer-copy {
     color: #475569 !important;
-}
-
-
-/* ==========================================================================
-   THEME TOGGLE STATE FIX (checked = Light Mode, unchecked = Dark Mode)
-   ========================================================================== */
-.switch-rail,
-.slider {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    padding: 0 5px !important;
-}
-
-.switch-icon-moon,
-.moon-icon {
-    order: 1 !important;
-    width: 14px !important;
-    height: 14px !important;
-    z-index: 1 !important;
-    transition: color 0.2s ease !important;
-}
-
-.switch-icon-sun,
-.sun-icon {
-    order: 2 !important;
-    width: 14px !important;
-    height: 14px !important;
-    z-index: 1 !important;
-    transition: color 0.2s ease !important;
-}
-
-/* Unchecked = Dark Mode (Knob at 0px over Moon on left) */
-.switch-rail::before,
-.slider::before {
-    transform: translateX(0) !important;
-}
-
-input:not(:checked) + .switch-rail .switch-icon-moon,
-input:not(:checked) + .slider .moon-icon {
-    color: var(--text-main) !important;
-}
-
-input:not(:checked) + .switch-rail .switch-icon-sun,
-input:not(:checked) + .slider .sun-icon {
-    color: var(--text-muted) !important;
-}
-
-/* Checked = Light Mode (Knob at 24px over Sun on right) */
-input:checked + .switch-rail::before,
-input:checked + .slider::before {
-    transform: translateX(24px) !important;
-}
-
-input:checked + .switch-rail .switch-icon-sun,
-input:checked + .slider .sun-icon {
-    color: var(--text-main) !important;
-}
-
-input:checked + .switch-rail .switch-icon-moon,
-input:checked + .slider .moon-icon {
-    color: var(--text-muted) !important;
 }
