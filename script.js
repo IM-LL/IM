@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Constrain to maximum 45-50 nodes based on viewport
     const calculateMaxNodes = () => {
         const screenArea = window.innerWidth * window.innerHeight;
-        if (screenArea < 400000) return 24;      // Mobile
+        if (window.innerWidth <= 768 || screenArea < 400000) return 22;      // Mobile
         if (screenArea < 900000) return 36;      // Tablet / Small Laptop
         return 48;                               // Desktop (capped at 48 < 50)
     };
